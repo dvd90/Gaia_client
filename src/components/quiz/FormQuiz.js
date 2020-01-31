@@ -110,14 +110,6 @@ const FormQuiz = () => {
               </MenuItem>
             ))}
           </Select>
-          {/* <TextField
-            id="standard-basic"
-            label="Email"
-            type="email"
-            name="email"
-            value={email}
-            onChange={e => onChange(e)}
-          /> */}
           <div className="quiz-btn">
             <Button type="submit" className="radiant-green-btn">
               Submit

@@ -29,7 +29,7 @@ const Login = () => {
     <Fragment>
       <section className="login">
         <div className="landing-logo">
-          <img className="landing-logo-img" src={gaiaLogo} />
+          <img className="landing-logo-img" src={gaiaLogo} alt="gaia-logo" />
         </div>
         <div className="header-title">Login</div>
         <form
@@ -39,7 +39,6 @@ const Login = () => {
           onSubmit={e => onSubmit(e)}
         >
           <TextField
-            id="standard-basic"
             label="Email"
             type="email"
             name="email"
@@ -47,9 +46,7 @@ const Login = () => {
             onChange={e => onChange(e)}
           />
           <TextField
-            id="standard-basic"
             label="Password"
-            id="standard-password-input"
             autoComplete="current-password"
             type="password"
             name="password"

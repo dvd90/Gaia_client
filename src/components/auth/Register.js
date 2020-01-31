@@ -54,7 +54,6 @@ const Register = () => {
           onSubmit={e => onSubmit(e)}
         >
           <TextField
-            id="standard-basic"
             label="Name"
             type="name"
             name="name"
@@ -62,7 +61,6 @@ const Register = () => {
             onChange={e => onChange(e)}
           />
           <TextField
-            id="standard-basic"
             label="Email"
             type="email"
             name="email"
@@ -70,7 +68,6 @@ const Register = () => {
             onChange={e => onChange(e)}
           />
           <TextField
-            id="standard-basic"
             label="Password"
             id="standard-password-input"
             autoComplete="current-password"
@@ -81,7 +78,6 @@ const Register = () => {
             onChange={e => onChange(e)}
           />
           <TextField
-            id="standard-basic"
             label="Confirm Password"
             id="standard-password-input"
             autoComplete="current-password"
@@ -92,7 +88,6 @@ const Register = () => {
             onChange={e => onChange(e)}
           />
           <TextField
-            id="standard-basic"
             label="Address"
             type="address"
             name="address"

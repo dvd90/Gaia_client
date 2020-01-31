@@ -7,7 +7,7 @@ const Landing = () => {
   return (
     <section className="landing">
       <div className="landing-logo">
-        <img className="landing-logo-img" src={gaiaLogo} />
+        <img className="landing-logo-img" src={gaiaLogo} alt="gaia-logo" />
       </div>
       <div className="landing-quotes">
         <p className="quote">
@@ -18,7 +18,7 @@ const Landing = () => {
         </p>
         <p className="quote-author">Freeman Dyson</p>
         <div className="landing-btns">
-          <Link to="/register">
+          <Link to="/quiz">
             <Button className="radiant-green-btn">Be part of the change</Button>
           </Link>
           <Link to="/login">
