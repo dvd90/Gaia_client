@@ -1,12 +1,13 @@
 import React, { Fragment, useState } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import gaiaLogo from "../../images/GAIA-logo.png";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import { setAlert } from "../../actions/alert";
+import PropTypes from "prop-types";
 
-// PAGE TODO!!!! Still a copy of login
-
-const Register = () => {
+const Register = ({ setAlert }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -24,6 +25,7 @@ const Register = () => {
     e.preventDefault();
     if (password !== password2) {
       console.log("Password do not match");
+      setAlert("Passwords do not match", "danger");
     } else {
       console.log("SUCCESS");
     }
@@ -69,7 +71,6 @@ const Register = () => {
           />
           <TextField
             label="Password"
-            id="standard-password-input"
             autoComplete="current-password"
             type="password"
             name="password"
@@ -79,7 +80,6 @@ const Register = () => {
           />
           <TextField
             label="Confirm Password"
-            id="standard-password-input"
             autoComplete="current-password"
             type="password"
             name="password2"
@@ -109,4 +109,8 @@ const Register = () => {
   );
 };
 
-export default Register;
+Register.propTypes = {
+  setAlert: PropTypes.func.isRequired
+};
+
+export default connect(null, { setAlert })(Register);
