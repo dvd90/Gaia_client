@@ -5,9 +5,10 @@ import gaiaLogo from "../../images/GAIA-logo.png";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { setAlert } from "../../actions/alert";
+import { register } from "../../actions/auth";
 import PropTypes from "prop-types";
 
-const Register = ({ setAlert }) => {
+const Register = ({ setAlert, register }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -27,15 +28,8 @@ const Register = ({ setAlert }) => {
       console.log("Password do not match");
       setAlert("Passwords do not match", "danger");
     } else {
-      console.log("SUCCESS");
+      register({ name, email, password, address });
     }
-    const newUser = {
-      name,
-      email,
-      password,
-      address
-    };
-    console.log(newUser);
   };
 
   return (
@@ -110,7 +104,8 @@ const Register = ({ setAlert }) => {
 };
 
 Register.propTypes = {
-  setAlert: PropTypes.func.isRequired
+  setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired
 };
 
-export default connect(null, { setAlert })(Register);
+export default connect(null, { setAlert, register })(Register);
