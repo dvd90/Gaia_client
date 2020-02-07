@@ -4,7 +4,9 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   USER_LOADED,
-  AUTH_ERROR
+  AUTH_ERROR,
+  LOGIN_FAIL,
+  LOGIN_SUCCESS
 } from "./types";
 import setAuthToken from "../utils/setAuthToken";
 
@@ -33,7 +35,8 @@ export const register = ({
   name,
   email,
   password,
-  address
+  address,
+  planet_consuption
 }) => async dispatch => {
   const config = {
     headers: {
@@ -41,7 +44,7 @@ export const register = ({
     }
   };
 
-  const body = { name, email, password, address };
+  const body = { name, email, password, address, planet_consuption };
 
   try {
     const res = await axios.post(
@@ -65,6 +68,42 @@ export const register = ({
 
     dispatch({
       type: REGISTER_FAIL
+    });
+  }
+};
+
+// Login User
+export const login = (email, password) => async dispatch => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  };
+
+  const body = { email, password };
+
+  try {
+    const res = await axios.post(
+      "https://gaia-mern-app.herokuapp.com/api/auth",
+      body,
+      config
+    );
+
+    dispatch({
+      type: LOGIN_SUCCESS,
+      payload: res.data
+    });
+  } catch (err) {
+    console.log(err.response);
+
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach(error => dispatch(setAlert(error.msg, "danger")));
+    }
+
+    dispatch({
+      type: LOGIN_FAIL
     });
   }
 };

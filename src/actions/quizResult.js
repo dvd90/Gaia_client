@@ -22,7 +22,6 @@ export const quizResult = ({
     res.data.earths += eater + flights + transportation;
     res.data.score = (Math.floor(res.data.earths * 100) / 100).toFixed(2);
 
-    console.log(res.data);
     dispatch({
       type: QUIZ_SUCCESS,
       payload: res.data
