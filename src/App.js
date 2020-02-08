@@ -6,7 +6,12 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import FormQuiz from "./components/quiz/FormQuiz";
 import QuizResult from "./components/quiz/QuizResult";
+import Dashboard from "./components/dashboard/Dashboard";
+
 import "./App.css";
+
+// Custom Private Routing
+import PrivateRoute from "./components/routing/PrivateRoute";
 
 // TEST
 import MapBox from "./components/layout/Mapbox";
@@ -39,6 +44,9 @@ const App = () => {
             <Route exact path="/login" component={Login} />
             <Route exact path="/quiz" component={FormQuiz} />
             <Route exact path="/quiz_result" component={QuizResult} />
+            <section id="private-routes">
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            </section>
             {/* test layout */}
             <Route exact path="/test_layout" component={MapBox} />
           </Switch>
