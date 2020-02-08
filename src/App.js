@@ -8,6 +8,7 @@ import FormQuiz from "./components/quiz/FormQuiz";
 import QuizResult from "./components/quiz/QuizResult";
 import Dashboard from "./components/dashboard/Dashboard";
 
+import gaiaLogo from "./images/GAIA-logo.png";
 import "./App.css";
 
 // Custom Private Routing
@@ -29,31 +30,48 @@ if (localStorage.token) {
 }
 
 const App = () => {
+  const isMobile = window.innerWidth <= 600;
+
   useEffect(() => {
     store.dispatch(loadUser());
   }, []);
 
-  return (
-    <Provider store={store}>
-      <Router>
-        <Fragment>
-          <Route exact path="/" component={Landing} />
-          <Alert />
-          <Switch>
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/quiz" component={FormQuiz} />
-            <Route exact path="/quiz_result" component={QuizResult} />
-            <section id="private-routes">
-              <PrivateRoute exact path="/dashboard" component={Dashboard} />
-            </section>
-            {/* test layout */}
-            <Route exact path="/test_layout" component={MapBox} />
-          </Switch>
-        </Fragment>
-      </Router>
-    </Provider>
-  );
+  if (isMobile) {
+    return (
+      <Provider store={store}>
+        <Router>
+          <Fragment>
+            <Alert />
+            <Switch>
+              <Route exact path="/" component={Landing} />
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/quiz" component={FormQuiz} />
+              <Route exact path="/quiz_result" component={QuizResult} />
+              <section id="private-routes">
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              </section>
+              {/* test layout */}
+              <Route exact path="/test_layout" component={MapBox} />
+            </Switch>
+          </Fragment>
+        </Router>
+      </Provider>
+    );
+  } else {
+    return (
+      <section id="notMobile">
+        <div className="notMobile-logo">
+          <img className="notMobile-logo-img" src={gaiaLogo} alt="gaia-logo" />
+        </div>
+        <div className="text-mobile">
+          <h1>Ooopppss our development version is mobile based :)</h1>
+          <h5>Please go on the website with your mobile...</h5>
+          <p>See you soon</p>
+        </div>
+      </section>
+    );
+  }
 };
 
 export default App;
