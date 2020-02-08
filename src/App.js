@@ -37,9 +37,9 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <Fragment>
-          <Route exact path="/" component={Landing} />
           <Alert />
           <Switch>
+            <Route exact path="/" component={Landing} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/quiz" component={FormQuiz} />
