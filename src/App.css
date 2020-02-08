@@ -1,3 +1,11 @@
+/* Not Mobile */
+
+#notMobile {
+  font-family: Montserrat;
+  text-align: center;
+  margin-top: 30vh;
+}
+
 /* General */
 
 :root {
