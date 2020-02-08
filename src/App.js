@@ -9,7 +9,7 @@ import QuizResult from "./components/quiz/QuizResult";
 import "./App.css";
 
 // TEST
-import Navbar from "./components/layout/Navbar";
+import MapBox from "./components/layout/Mapbox";
 
 // REDUX
 import { Provider } from "react-redux";
@@ -40,7 +40,7 @@ const App = () => {
             <Route exact path="/quiz" component={FormQuiz} />
             <Route exact path="/quiz_result" component={QuizResult} />
             {/* test layout */}
-            <Route exact path="/test_layout" component={Navbar} />
+            <Route exact path="/test_layout" component={MapBox} />
           </Switch>
         </Fragment>
       </Router>

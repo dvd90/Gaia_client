@@ -13,6 +13,10 @@ a {
   text-decoration: none;
 }
 
+body {
+  margin: 0;
+}
+
 /* navigation bar */
 
 #gaia-nav {
@@ -262,4 +266,11 @@ a {
   background: #fff;
   color: #333;
   border: #ccc solid 1px;
+}
+
+/* Map CSS */
+
+.gaia-map {
+  height: 100vh;
+  max-height: 100vh;
 }
