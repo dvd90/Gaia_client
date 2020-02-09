@@ -17,4 +17,8 @@ export const LOGOUT = "LOGOUT";
 
 // Challenge types
 export const GET_ALL_CHALLENGES = "GET_ALL_CHALLENGES";
-export const PROFILE_ERROR = "PROFILE_ERROR";
+export const CHALLENGES_ERROR = "CHALLENGES_ERROR";
+
+// Event types
+export const GET_ALL_EVENTS = "GET_ALL_EVENTS";
+export const EVENTS_ERROR = "EVENTS_ERROR";

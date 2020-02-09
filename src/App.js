@@ -14,14 +14,19 @@ import "./App.css";
 // Custom Private Routing
 import PrivateRoute from "./components/routing/PrivateRoute";
 
+// Challenges
+import Challenges from "./components/challenges/Challenges";
+
+// Challenges
+import Events from "./components/events/Events";
+
 // TEST
-import ChallengeCard from './components/layout/ChallengeCard';
+import ChallengeCard from "./components/layout/ChallengeCard";
 import MapBox from "./components/layout/Mapbox";
 
-
 // REDUX
-import { Provider } from 'react-redux';
-import store from './store';
+import { Provider } from "react-redux";
+import store from "./store";
 
 // Auth
 import { loadUser } from "./actions/auth";
@@ -50,8 +55,11 @@ const App = () => {
               <Route exact path="/login" component={Login} />
               <Route exact path="/quiz" component={FormQuiz} />
               <Route exact path="/quiz_result" component={QuizResult} />
+              <Route exact path="/challenges" component={Challenges} />
+              <Route exact path="/events" component={Events} />
+
               {/* test layout */}
-      <Route exact path='/test_layout' component={ChallengeCard} />
+              <Route exact path="/test_layout" component={ChallengeCard} />
               <Route exact path="/test_layout_map" component={MapBox} />
               <section id="private-routes">
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
@@ -76,6 +84,5 @@ const App = () => {
     );
   }
 };
-
 
 export default App;

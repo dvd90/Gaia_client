@@ -1,15 +1,13 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-import Rater from "react-rater";
 import PropTypes from "prop-types";
-import "react-rater/lib/react-rater.css";
 
-const ChallengeCard = ({ component }) => {
+const EventCard = ({ component }) => {
   let renderCard = "";
   if (component) {
     renderCard = (
       <Fragment>
-        <Link to={`challenges/${component._id}`}>
+        <Link to={`events/${component._id}`}>
           <div className="challenge_card">
             <div className="img_challenge">
               <img
@@ -19,15 +17,6 @@ const ChallengeCard = ({ component }) => {
             </div>
             <div className="challenge_info">
               <h2 className="challenge_title">{component.title}</h2>
-              <p className="Challenge_impact"> Impact </p>
-              <div className="stars">
-                {" "}
-                <Rater
-                  total={5}
-                  rating={component.gaia_points / 5}
-                  interactive={false}
-                />
-              </div>
             </div>
           </div>
         </Link>
@@ -37,8 +26,8 @@ const ChallengeCard = ({ component }) => {
   return <Fragment>{renderCard}</Fragment>;
 };
 
-ChallengeCard.propTypes = {
+EventCard.propTypes = {
   component: PropTypes.object
 };
 
-export default ChallengeCard;
+export default EventCard;

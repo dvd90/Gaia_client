@@ -139,7 +139,7 @@ body {
 }
 
 .quote {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 16px;
   font-style: italic;
   text-transform: uppercase;
@@ -149,7 +149,7 @@ body {
 .quote-author {
   text-transform: uppercase;
   font-size: 16px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 700;
   margin-top: 0;
 }
@@ -214,7 +214,7 @@ body {
 }
 
 .digit-quiz-result {
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   font-size: 60px;
 }
 
@@ -284,6 +284,10 @@ body {
 }
 
 /* Challenge card */
+.nav-margin {
+  margin-bottom: 100px;
+}
+
 .challenge_card {
   height: 147px;
   width: 85%;
@@ -294,15 +298,16 @@ body {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin: auto;
   display: flex;
+  margin-bottom: 2vh;
 }
 .challenge_title {
-  font-family: 'Quicksand';
+  font-family: "Quicksand";
   font-weight: medium;
   color: #384f7d;
   font-size: 18px;
 }
 .Challenge_impact {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -327,6 +332,15 @@ body {
   text-align: left;
   margin-top: 2vh;
   flex: 2;
+}
+
+.new-btn-cont {
+  margin-top: 3vh;
+}
+
+.new-btn {
+  width: 310px;
+  border-radius: 31px !important;
 }
 
 /* Map CSS */
@@ -377,4 +391,35 @@ body {
 .nb-card {
   font-weight: bold;
   font-size: 15px;
+}
+
+/* Events */
+
+.events-tabs {
+  margin-bottom: 25px !important;
+  height: 65px;
+  display: flex;
+  text-align: center;
+  margin: 0 auto;
+  width: 314px;
+  background: #ffffff;
+  border-radius: 7px;
+  box-shadow: 4px 12px 25px rgba(71, 55, 255, 0.08);
+}
+.tab-link {
+  align-self: center;
+  width: 100%;
+}
+
+.tab-link a {
+  font-family: Quicksand;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 24px;
+  color: #9fa0a8;
+}
+
+.selected a {
+  color: #000000;
+  font-weight: bold !important;
 }
