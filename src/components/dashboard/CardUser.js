@@ -25,7 +25,7 @@ const CardUser = ({ component }) => {
         </p>
         <div className="line"></div>
         <p className="card-user-item">
-          Completed Challenges: <span className="nb-card"> 5</span>
+          Completed Challenges: <span className="nb-card">0</span>
         </p>
       </Fragment>
     );

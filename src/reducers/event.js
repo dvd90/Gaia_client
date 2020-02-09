@@ -1,11 +1,11 @@
-import { CHALLENGES_ERROR, GET_ALL_CHALLENGES } from "../actions/types";
+import { EVENTS_ERROR, GET_ALL_EVENTS } from "../actions/types";
 
 const initialState = {
-  challenge: null,
-  challenges: [],
-  challenge_open: [],
-  challenge_created: [],
-  challenge_completed: [],
+  event: null,
+  events: [],
+  event_open: [],
+  event_created: [],
+  event_completed: [],
   error: {},
   loading: true
 };
@@ -13,13 +13,13 @@ const initialState = {
 export default function(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
-    case GET_ALL_CHALLENGES:
+    case GET_ALL_EVENTS:
       return {
         ...state,
-        challenges: payload,
+        events: payload,
         loading: false
       };
-    case CHALLENGES_ERROR:
+    case EVENTS_ERROR:
       return {
         ...state,
         error: payload,

@@ -44,7 +44,7 @@ const Navbar = ({ logout }) => {
       <div className="nav-menu">
         <ul id="menu-open-nav">
           <li className="item-menu">
-            <Link to="/">Home</Link>
+            <Link to="/dashboard">Home</Link>
           </li>
           <li className="item-menu">
             <Link to="/challenges">Challenges</Link>
