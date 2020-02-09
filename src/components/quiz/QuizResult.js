@@ -20,8 +20,7 @@ const QuizResult = () => {
         </div>
         <div className="quiz-result-consuption">
           <div className="digit-quiz-result">
-            {/* PLACEHOLDER */}
-            3,7
+            {localStorage.getItem("score")}
           </div>
           <div className="logo-quiz-result">
             <img src={planetLogo} alt="gaia" />

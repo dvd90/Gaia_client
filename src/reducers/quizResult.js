@@ -1,22 +1,20 @@
 import { QUIZ_SUCCESS, QUIZ_FAIL } from "../actions/types";
 
 const initialState = {
-  score: 0
+  score: localStorage.getItem("score")
 };
 
 export default function(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case QUIZ_SUCCESS:
-      console.log({
-        ...state,
-        ...payload
-      });
+      localStorage.setItem("score", payload.score);
       return {
         ...state,
         ...payload
       };
     case QUIZ_FAIL:
+      localStorage.removeItem("score");
       return {
         ...state
       };

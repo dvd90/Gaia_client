@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
@@ -9,7 +9,7 @@ import countryList from "./countries";
 import PropTypes from "prop-types";
 import { quizResult } from "../../actions/quizResult";
 
-const FormQuiz = ({ quizResult }) => {
+const FormQuiz = ({ quizResult, score }) => {
   const [formData, setFormData] = useState({
     country: "",
     eater: "",
@@ -41,9 +41,12 @@ const FormQuiz = ({ quizResult }) => {
 
   const onSubmit = async e => {
     e.preventDefault();
-    console.log(formData);
     quizResult(formData);
   };
+
+  if (localStorage.score) {
+    return <Redirect to="/quiz_result" />;
+  }
 
   return (
     <Fragment>
@@ -141,7 +144,12 @@ const FormQuiz = ({ quizResult }) => {
 };
 
 FormQuiz.propTypes = {
-  quizResult: PropTypes.func.isRequired
+  quizResult: PropTypes.func.isRequired,
+  score: PropTypes.string
 };
 
-export default connect(null, { quizResult })(FormQuiz);
+const mapStateToProps = state => ({
+  score: state.quizResult.score
+});
+
+export default connect(mapStateToProps, { quizResult })(FormQuiz);

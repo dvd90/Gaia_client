@@ -1,14 +1,14 @@
 import React, { Fragment, useState } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import gaiaLogo from "../../images/GAIA-logo.png";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { setAlert } from "../../actions/alert";
-import { register } from "../../actions/auth";
+import { register, loadUser } from "../../actions/auth";
 import PropTypes from "prop-types";
 
-const Register = ({ setAlert, register }) => {
+const Register = ({ setAlert, register, isAuthenticated, loadUser }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -17,6 +17,7 @@ const Register = ({ setAlert, register }) => {
     address: ""
   });
 
+  const planet_consuption = localStorage.score;
   const { name, email, password, password2, address } = formData;
 
   const onChange = e =>
@@ -28,9 +29,15 @@ const Register = ({ setAlert, register }) => {
       console.log("Password do not match");
       setAlert("Passwords do not match", "danger");
     } else {
-      register({ name, email, password, address });
+      register({ name, email, password, address, planet_consuption });
     }
   };
+
+  // Redirect if logged in
+  if (isAuthenticated) {
+    loadUser();
+    return <Redirect to="/dashboard" />;
+  }
 
   return (
     <Fragment>
@@ -105,7 +112,15 @@ const Register = ({ setAlert, register }) => {
 
 Register.propTypes = {
   setAlert: PropTypes.func.isRequired,
-  register: PropTypes.func.isRequired
+  register: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
+  loadUser: PropTypes.func.isRequired
 };
 
-export default connect(null, { setAlert, register })(Register);
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { setAlert, register, loadUser })(
+  Register
+);

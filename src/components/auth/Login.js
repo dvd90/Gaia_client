@@ -1,10 +1,13 @@
 import React, { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import gaiaLogo from "../../images/GAIA-logo.png";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import { connect } from "react-redux";
+import { login, loadUser } from "../../actions/auth";
+import PropTypes from "prop-types";
 
-const Login = () => {
+const Login = ({ login, isAuthenticated, loadUser }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: ""
@@ -17,13 +20,15 @@ const Login = () => {
 
   const onSubmit = async e => {
     e.preventDefault();
-    console.log("SUCCESS");
-    const newUser = {
-      email,
-      password
-    };
-    console.log(newUser);
+
+    login(email, password);
   };
+
+  // Redirect if logged in
+  if (isAuthenticated) {
+    loadUser();
+    return <Redirect to="/dashboard" />;
+  }
 
   return (
     <Fragment>
@@ -69,4 +74,14 @@ const Login = () => {
   );
 };
 
-export default Login;
+Login.propTypes = {
+  login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
+  loadUser: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { login, loadUser })(Login);

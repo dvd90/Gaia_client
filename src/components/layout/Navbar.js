@@ -3,13 +3,16 @@ import { Link } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import gaiaNav from "../../images/logonav.png";
+import { connect } from "react-redux";
+import { PropTypes } from "prop-types";
+import { logout } from "../../actions/auth";
 
-const Navbar = () => {
+const Navbar = ({ logout }) => {
   const [nav, setNav] = useState(true);
 
   const hamburger = (
     <Toolbar id="gaia-nav">
-      <Link to="#">
+      <Link to="/">
         <img src={gaiaNav} alt="gaia-logo-nav" />
       </Link>
       <div className="nav-hamburger">
@@ -26,7 +29,7 @@ const Navbar = () => {
     <Toolbar id="gaia-nav-open">
       <div className="nav-hamburger">
         <div className="logo-nav-open">
-          <Link to="#">
+          <Link to="/">
             <img src={gaiaNav} alt="gaia-logo-nav" />
           </Link>
         </div>
@@ -44,16 +47,18 @@ const Navbar = () => {
             <Link to="/">Home</Link>
           </li>
           <li className="item-menu">
-            <Link to="#">Challenges</Link>
+            <Link to="/challenges">Challenges</Link>
           </li>
           <li className="item-menu">
-            <Link to="#">Events</Link>
+            <Link to="/events">Events</Link>
           </li>
           <li className="item-menu">
-            <Link to="#">Profile</Link>
+            <Link to="/dashboard">Profile</Link>
           </li>
           <li className="item-menu lgo-item">
-            <Link to="#">Log Out</Link>
+            <Link onClick={logout} to="#!">
+              Log Out
+            </Link>
           </li>
         </ul>
       </div>
@@ -71,4 +76,13 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+Navbar.propTypes = {
+  logout: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps, { logout })(Navbar);

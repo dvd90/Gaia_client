@@ -1,3 +1,11 @@
+/* Not Mobile */
+
+#notMobile {
+  font-family: Montserrat;
+  text-align: center;
+  margin-top: 30vh;
+}
+
 /* General */
 
 :root {
@@ -11,6 +19,16 @@
 
 a {
   text-decoration: none;
+}
+
+body {
+  margin: 0;
+}
+
+#private-routes {
+  padding-top: 120px;
+  background: #e5e5e5;
+  height: 100vh;
 }
 
 /* navigation bar */
@@ -163,6 +181,7 @@ a {
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
+  padding: 0 6vw;
   line-height: 24px;
   color: rgba(31, 32, 65, 0.75);
 }
@@ -264,6 +283,7 @@ a {
   border: #ccc solid 1px;
 }
 
+/* Challenge card */
 .challenge_card {
   height: 147px;
   width: 85%;
@@ -307,4 +327,54 @@ a {
   text-align: left;
   margin-top: 2vh;
   flex: 2;
+}
+
+/* Map CSS */
+
+.gaia-map {
+  height: 100vh;
+  max-height: 100vh;
+}
+
+/* Dashboard */
+
+#card-user {
+  margin: 0 auto;
+  width: 86vw;
+  height: 300px;
+  background: #ffffff;
+  border-radius: 7px;
+  box-shadow: 4px 12px 25px rgba(71, 55, 255, 0.08);
+}
+
+.card-user-title {
+  font-size: 20px;
+  line-height: 25px;
+  padding: 2vh 5vw;
+  margin-top: 0;
+}
+
+.card-user-content {
+  margin: 0 auto;
+  width: 72vw;
+}
+
+.card-user-item {
+  text-align: center;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: lighter;
+  font-size: 14px;
+  line-height: 17px;
+  color: rgba(31, 32, 65, 0.75);
+}
+
+.line {
+  height: 1px;
+  background: rgba(31, 32, 65, 0.1);
+}
+
+.nb-card {
+  font-weight: bold;
+  font-size: 15px;
 }
