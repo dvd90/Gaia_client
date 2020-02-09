@@ -1,17 +1,26 @@
 import React, { Fragment } from "react";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Navbar from "../layout/Navbar";
 import CardUser from "./CardUser";
 
-const Dashboard = props => {
+const Dashboard = ({ isAuthenticated, auth }) => {
   return (
     <Fragment>
       <Navbar />
-      <CardUser />
+      {/* Get the user infos */}
+      <CardUser component={auth.user} />
     </Fragment>
   );
 };
 
-Dashboard.propTypes = {};
+Dashboard.propTypes = {
+  isAuthenticated: PropTypes.bool
+};
 
-export default Dashboard;
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  auth: state.auth
+});
+
+export default connect(mapStateToProps)(Dashboard);

@@ -4,10 +4,10 @@ import gaiaLogo from "../../images/GAIA-logo.png";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
-import { login } from "../../actions/auth";
+import { login, loadUser } from "../../actions/auth";
 import PropTypes from "prop-types";
 
-const Login = ({ login, isAuthenticated }) => {
+const Login = ({ login, isAuthenticated, loadUser }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: ""
@@ -26,6 +26,7 @@ const Login = ({ login, isAuthenticated }) => {
 
   // Redirect if logged in
   if (isAuthenticated) {
+    loadUser();
     return <Redirect to="/dashboard" />;
   }
 
@@ -75,11 +76,12 @@ const Login = ({ login, isAuthenticated }) => {
 
 Login.propTypes = {
   login: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool
+  isAuthenticated: PropTypes.bool,
+  loadUser: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, { login })(Login);
+export default connect(mapStateToProps, { login, loadUser })(Login);
