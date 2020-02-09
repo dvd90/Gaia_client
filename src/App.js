@@ -48,11 +48,11 @@ const App = () => {
               <Route exact path="/login" component={Login} />
               <Route exact path="/quiz" component={FormQuiz} />
               <Route exact path="/quiz_result" component={QuizResult} />
+              {/* test layout */}
+              <Route exact path="/test_layout" component={MapBox} />
               <section id="private-routes">
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
               </section>
-              {/* test layout */}
-              <Route exact path="/test_layout" component={MapBox} />
             </Switch>
           </Fragment>
         </Router>

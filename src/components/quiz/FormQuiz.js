@@ -44,7 +44,7 @@ const FormQuiz = ({ quizResult, score }) => {
     quizResult(formData);
   };
 
-  if (score) {
+  if (localStorage.score) {
     return <Redirect to="/quiz_result" />;
   }
 
