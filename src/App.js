@@ -15,11 +15,13 @@ import "./App.css";
 import PrivateRoute from "./components/routing/PrivateRoute";
 
 // TEST
+import ChallengeCard from './components/layout/ChallengeCard';
 import MapBox from "./components/layout/Mapbox";
 
+
 // REDUX
-import { Provider } from "react-redux";
-import store from "./store";
+import { Provider } from 'react-redux';
+import store from './store';
 
 // Auth
 import { loadUser } from "./actions/auth";
@@ -49,7 +51,8 @@ const App = () => {
               <Route exact path="/quiz" component={FormQuiz} />
               <Route exact path="/quiz_result" component={QuizResult} />
               {/* test layout */}
-              <Route exact path="/test_layout" component={MapBox} />
+      <Route exact path='/test_layout' component={ChallengeCard} />
+              <Route exact path="/test_layout_map" component={MapBox} />
               <section id="private-routes">
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
               </section>
@@ -73,5 +76,6 @@ const App = () => {
     );
   }
 };
+
 
 export default App;

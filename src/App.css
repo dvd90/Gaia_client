@@ -139,7 +139,7 @@ body {
 }
 
 .quote {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   font-style: italic;
   text-transform: uppercase;
@@ -149,7 +149,7 @@ body {
 .quote-author {
   text-transform: uppercase;
   font-size: 16px;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 700;
   margin-top: 0;
 }
@@ -214,7 +214,7 @@ body {
 }
 
 .digit-quiz-result {
-  font-family: "Quicksand", sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-size: 60px;
 }
 
@@ -281,6 +281,52 @@ body {
   background: #fff;
   color: #333;
   border: #ccc solid 1px;
+}
+
+/* Challenge card */
+.challenge_card {
+  height: 147px;
+  width: 85%;
+  background-color: #ffffff;
+  border: thin;
+  border-color: black;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: auto;
+  display: flex;
+}
+.challenge_title {
+  font-family: 'Quicksand';
+  font-weight: medium;
+  color: #384f7d;
+  font-size: 18px;
+}
+.Challenge_impact {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  color: #384f7d;
+  opacity: 80%;
+  margin-top: 30px;
+  margin-block-end: 0em;
+}
+
+.img_challenge {
+  flex: 1.3;
+  display: flex;
+  align-items: center;
+}
+.img_challenge > img {
+  width: 77px;
+  height: 109px;
+  margin: auto;
+  display: block;
+}
+.challenge_info {
+  text-align: left;
+  margin-top: 2vh;
+  flex: 2;
 }
 
 /* Map CSS */
