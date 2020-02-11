@@ -1,7 +1,8 @@
 import {
   CHALLENGES_ERROR,
   GET_ALL_CHALLENGES,
-  GET_CHALLENGE
+  GET_CHALLENGE,
+  GET_MY_CHALLENGES
 } from "../actions/types";
 
 const initialState = {
@@ -17,6 +18,14 @@ const initialState = {
 export default function(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
+    case GET_MY_CHALLENGES:
+      return {
+        ...state,
+        challenge_created: payload.created,
+        challenge_open: payload.opened,
+        challenge_completed: payload.completed,
+        loading: false
+      };
     case GET_ALL_CHALLENGES:
       return {
         ...state,

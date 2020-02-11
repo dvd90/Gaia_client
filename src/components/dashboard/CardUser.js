@@ -21,11 +21,11 @@ const CardUser = ({ component }) => {
         </p>
         <div className="line"></div>
         <p className="card-user-item">
-          Open Challenges: <span className="nb-card"> 5</span>
+          Open Challenges: <span className="nb-card">TODO</span>
         </p>
         <div className="line"></div>
         <p className="card-user-item">
-          Completed Challenges: <span className="nb-card">0</span>
+          Completed Challenges: <span className="nb-card">TODO</span>
         </p>
       </Fragment>
     );
@@ -41,6 +41,7 @@ const CardUser = ({ component }) => {
 
 CardUser.propTypes = {
   component: PropTypes.object
+  // nbc: PropTypes.number
 };
 
 // CardUser.propTypes = {};
