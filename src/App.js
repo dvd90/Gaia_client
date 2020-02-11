@@ -16,6 +16,7 @@ import PrivateRoute from "./components/routing/PrivateRoute";
 
 // Challenges
 import Challenges from "./components/challenges/Challenges";
+import ShowChallenge from "./components/challenges/ShowChallenge";
 
 // Challenges
 import Events from "./components/events/Events";
@@ -56,6 +57,7 @@ const App = () => {
               <Route exact path="/quiz" component={FormQuiz} />
               <Route exact path="/quiz_result" component={QuizResult} />
               <Route exact path="/challenges" component={Challenges} />
+              <Route exact path="/challenges/:id" component={ShowChallenge} />
               <Route exact path="/events" component={Events} />
 
               {/* test layout */}

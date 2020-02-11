@@ -423,3 +423,48 @@ body {
   color: #000000;
   font-weight: bold !important;
 }
+
+/* Show pages */
+
+.show-banner img {
+  background-size: cover;
+  height: 325px;
+  width: 100%;
+}
+
+.show-title {
+  margin: 5vh 20px;
+  text-align: center;
+  font-family: Quicksand;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 29px;
+  color: #1f2041;
+}
+
+.show-points {
+  margin: 2vh 30px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 17px;
+  line-height: 24px;
+  color: rgba(31, 32, 65, 0.5);
+}
+
+.show-btns {
+  margin-top: 5vh;
+  display: flex;
+  place-content: space-between;
+}
+
+.show-btn {
+  width: 135px;
+}
+
+.show-description p {
+  font-size: 14px;
+  line-height: 24px;
+  color: rgba(31, 32, 65, 0.75);
+}

@@ -1,4 +1,8 @@
-import { CHALLENGES_ERROR, GET_ALL_CHALLENGES } from "../actions/types";
+import {
+  CHALLENGES_ERROR,
+  GET_ALL_CHALLENGES,
+  GET_CHALLENGE
+} from "../actions/types";
 
 const initialState = {
   challenge: null,
@@ -17,6 +21,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         challenges: payload,
+        loading: false
+      };
+    case GET_CHALLENGE:
+      return {
+        ...state,
+        challenge: payload,
         loading: false
       };
     case CHALLENGES_ERROR:
