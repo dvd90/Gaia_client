@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 
-const CardUser = ({ component }) => {
+const CardUser = ({ component, opened, completed }) => {
   let renderCard = "";
   if (component) {
     const { name, planet_consuption, gaia_points } = component;
@@ -21,11 +21,11 @@ const CardUser = ({ component }) => {
         </p>
         <div className="line"></div>
         <p className="card-user-item">
-          Open Challenges: <span className="nb-card"> 5</span>
+          Open Challenges: <span className="nb-card">{opened}</span>
         </p>
         <div className="line"></div>
         <p className="card-user-item">
-          Completed Challenges: <span className="nb-card">0</span>
+          Completed Challenges: <span className="nb-card">{completed}</span>
         </p>
       </Fragment>
     );
@@ -40,7 +40,9 @@ const CardUser = ({ component }) => {
 };
 
 CardUser.propTypes = {
-  component: PropTypes.object
+  component: PropTypes.object,
+  opened: PropTypes.number,
+  completed: PropTypes.number
 };
 
 // CardUser.propTypes = {};
