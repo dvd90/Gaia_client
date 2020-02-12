@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
 import { logout } from "../../actions/auth";
 
-const Navbar = ({ logout }) => {
+const Navbar = ({ logout, auth }) => {
   const [nav, setNav] = useState(true);
 
   const hamburger = (
@@ -52,14 +52,23 @@ const Navbar = ({ logout }) => {
           <li className="item-menu">
             <Link to="/events">Events</Link>
           </li>
-          <li className="item-menu">
-            <Link to="/dashboard">Profile</Link>
-          </li>
-          <li className="item-menu lgo-item">
-            <Link onClick={logout} to="#!">
-              Log Out
-            </Link>
-          </li>
+
+          {auth.isAuthenticated ? (
+            <Fragment>
+              <li className="item-menu">
+                <Link to="/dashboard">Profile</Link>
+              </li>
+              <li className="item-menu lgo-item">
+                <Link onClick={logout} to="#!">
+                  Log Out
+                </Link>
+              </li>
+            </Fragment>
+          ) : (
+            <li className="item-menu lgo-item">
+              <Link to="/login">Login</Link>
+            </li>
+          )}
         </ul>
       </div>
     </Toolbar>
