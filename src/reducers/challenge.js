@@ -8,9 +8,9 @@ import {
 const initialState = {
   challenge: null,
   challenges: [],
-  challenge_open: [],
-  challenge_created: [],
-  challenge_completed: [],
+  challengeOpened: [],
+  challengeCreated: [],
+  challengeCompleted: [],
   error: {},
   loading: true
 };
@@ -21,9 +21,9 @@ export default function(state = initialState, action) {
     case GET_MY_CHALLENGES:
       return {
         ...state,
-        challenge_created: payload.created,
-        challenge_open: payload.opened,
-        challenge_completed: payload.completed,
+        challengeCreated: payload.created,
+        challengeOpened: payload.opened,
+        challengeCompleted: payload.completed,
         loading: false
       };
     case GET_ALL_CHALLENGES:

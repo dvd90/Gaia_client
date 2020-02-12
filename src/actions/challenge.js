@@ -76,8 +76,6 @@ export const getChallenge = id => async dispatch => {
       `https://gaia-mern-app.herokuapp.com/api/challenges/${id}`
     );
 
-    console.log(res.data);
-
     dispatch({
       type: GET_CHALLENGE,
       payload: res.data

@@ -20,7 +20,8 @@ const ShowChallenge = ({ getChallenge, challenge }) => {
           <h2>{challenge.title}</h2>
         </div>
         <div className="show-points">
-          Gaia points: {challenge.gaia_points} <i class="fas fa-globe-europe" />
+          Gaia points: {challenge.gaia_points}{" "}
+          <i className="fas fa-globe-europe" />
           <p className="show-description">{challenge.description}</p>
           <div className="show-btns">
             <Link to="/#!">
@@ -54,8 +55,7 @@ const ShowChallenge = ({ getChallenge, challenge }) => {
 
 ShowChallenge.propTypes = {
   getChallenge: PropTypes.func.isRequired,
-  // isAuthenticated: PropTypes.bool
-  challenge: PropTypes.object.isRequired
+  challenge: PropTypes.object
 };
 
 const mapStateToProps = state => ({

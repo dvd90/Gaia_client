@@ -1,11 +1,15 @@
-import { EVENTS_ERROR, GET_ALL_EVENTS } from "../actions/types";
+import {
+  EVENTS_ERROR,
+  GET_ALL_EVENTS,
+  GET_MY_EVENTS,
+  GET_EVENT
+} from "../actions/types";
 
 const initialState = {
   event: null,
   events: [],
-  event_open: [],
-  event_created: [],
-  event_completed: [],
+  eventJoined: [],
+  eventCreated: [],
   error: {},
   loading: true
 };
@@ -13,6 +17,19 @@ const initialState = {
 export default function(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
+    case GET_EVENT:
+      return {
+        ...state,
+        event: payload,
+        loading: false
+      };
+    case GET_MY_EVENTS:
+      return {
+        ...state,
+        eventJoined: payload.joined,
+        eventCreated: payload.created,
+        loading: false
+      };
     case GET_ALL_EVENTS:
       return {
         ...state,

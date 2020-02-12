@@ -57,15 +57,13 @@ const App = () => {
               <Route exact path="/quiz" component={FormQuiz} />
               <Route exact path="/quiz_result" component={QuizResult} />
               <Route exact path="/challenges" component={Challenges} />
-              <Route exact path="/challenges/:id" component={ShowChallenge} />
+              <PrivateRoute
+                exact
+                path="/challenges/:id"
+                component={ShowChallenge}
+              />
               <Route exact path="/events" component={Events} />
-
-              {/* test layout */}
-              <Route exact path="/test_layout" component={ChallengeCard} />
-              <Route exact path="/test_layout_map" component={MapBox} />
-              <section id="private-routes">
-                <PrivateRoute exact path="/dashboard" component={Dashboard} />
-              </section>
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </Switch>
           </Fragment>
         </Router>

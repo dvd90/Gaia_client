@@ -25,3 +25,4 @@ export const GET_MY_CHALLENGES = "GET_MY_CHALLENGES";
 export const GET_ALL_EVENTS = "GET_ALL_EVENTS";
 export const GET_EVENT = "GET_EVENT";
 export const EVENTS_ERROR = "EVENTS_ERROR";
+export const GET_MY_EVENTS = "GET_MY_EVENTS";
