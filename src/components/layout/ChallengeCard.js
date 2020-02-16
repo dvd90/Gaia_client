@@ -1,13 +1,13 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import Rater from "react-rater";
 import PropTypes from "prop-types";
 import "react-rater/lib/react-rater.css";
 
 const ChallengeCard = ({ component }) => {
-  let renderCard = "";
+  const [renderCard, setRenderCard] = useState("");
   if (component) {
-    renderCard = (
+    setRenderCard(
       <Fragment>
         <Link to={`challenges/${component._id}`}>
           <div className="challenge_card">

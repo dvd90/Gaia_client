@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment } from "react";
+import React, { useEffect, Fragment, useState } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getChallenge } from "../../actions/challenge";
@@ -8,13 +8,14 @@ import Button from "@material-ui/core/Button";
 
 const ShowChallenge = ({ getChallenge, challenge }) => {
   let { id } = useParams();
-  let renderChallenge;
   useEffect(() => {
     getChallenge(id);
   }, [getChallenge, id]);
 
+  const [renderChallenge, setRenderChallenge] = useState("");
+
   if (challenge) {
-    renderChallenge = (
+    setRenderChallenge(
       <Fragment>
         <div className="show-title">
           <h2>{challenge.title}</h2>

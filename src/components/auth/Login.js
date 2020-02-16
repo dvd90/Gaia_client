@@ -59,7 +59,6 @@ const Login = ({ login, isAuthenticated, loadUser }) => {
             value={password}
             onChange={e => onChange(e)}
           />
-          {/* Need to connect buttons */}
           <div className="landing-btns quiz-btn">
             <Button type="submit" className="radiant-green-btn">
               Login

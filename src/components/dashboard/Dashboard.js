@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Navbar from "../layout/Navbar";
@@ -20,9 +20,10 @@ const Dashboard = ({
     }
   }, [getAllMyChallenges, isAuthenticated, user]);
 
-  let renderCreatedChallenges = "";
+  const [renderCreatedChallenges, setRenderCreatedChallenges] = useState("");
+
   if (challengeCreated.length > 0) {
-    renderCreatedChallenges = (
+    setRenderCreatedChallenges(
       <Fragment>
         <h3>Created Challenges</h3>
         {challengeCreated.map(challenge => (
@@ -32,11 +33,11 @@ const Dashboard = ({
     );
   }
 
-  let nbChallengeOpen = 0;
-  let renderOpenedChallenges = "";
+  const [nbChallengeOpen, setNbChallengeOpen] = useState(0);
+  const [renderOpenedChallenges, setRenderOpenedChallenges] = useState("");
   if (challengeOpened.length > 0) {
-    nbChallengeOpen = challengeOpened.length;
-    renderOpenedChallenges = (
+    setNbChallengeOpen(challengeOpened.length);
+    setRenderOpenedChallenges(
       <Fragment>
         <h3>Created Challenges</h3>
         {challengeOpened.map(challenge => (
@@ -46,11 +47,13 @@ const Dashboard = ({
     );
   }
 
-  let nbChallengeCompleted = 0;
-  let renderCompletedChallenges = "";
+  const [nbChallengeCompleted, setNbChallengeCompleted] = useState(0);
+  const [renderCompletedChallenges, setRenderCompletedChallenges] = useState(
+    ""
+  );
   if (challengeCompleted.length > 0) {
-    nbChallengeCompleted = challengeCompleted.length;
-    renderCompletedChallenges = (
+    setNbChallengeCompleted(challengeCompleted.length);
+    setRenderCompletedChallenges(
       <Fragment>
         <h3>Created Challenges</h3>
         {challengeCompleted.map(challenge => (

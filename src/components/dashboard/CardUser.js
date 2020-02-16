@@ -1,11 +1,11 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import PropTypes from "prop-types";
 
 const CardUser = ({ component, opened, completed }) => {
-  let renderCard = "";
+  const [renderCard, setRenderCard] = useState("");
   if (component) {
     const { name, planet_consuption, gaia_points } = component;
-    renderCard = (
+    setRenderCard(
       <Fragment>
         {" "}
         <h3 className="header-title card-user-title">
@@ -44,7 +44,5 @@ CardUser.propTypes = {
   opened: PropTypes.number,
   completed: PropTypes.number
 };
-
-// CardUser.propTypes = {};
 
 export default CardUser;

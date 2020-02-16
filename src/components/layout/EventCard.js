@@ -1,11 +1,11 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const EventCard = ({ component }) => {
-  let renderCard = "";
+  const [renderCard, setRenderCard] = useState("");
   if (component) {
-    renderCard = (
+    setRenderCard(
       <Fragment>
         <Link to={`events/${component._id}`}>
           <div className="challenge_card">
