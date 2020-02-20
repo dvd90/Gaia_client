@@ -4,7 +4,7 @@ import Rater from "react-rater";
 import PropTypes from "prop-types";
 import "react-rater/lib/react-rater.css";
 
-const ChallengeCard = ({ component }) => {
+const ChallengeCard = ({ component, challengeOpened }) => {
   return (
     <Fragment>
       {!component ? (

@@ -476,6 +476,7 @@ body {
 }
 
 .show-btns {
+  margin: 0 30px;
   margin-top: 5vh;
   display: flex;
   place-content: space-between;
