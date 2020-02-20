@@ -56,8 +56,10 @@ export const getAllMyChallenges = user_id => async dispatch => {
       })
     );
 
-    const all = res.data;
-
+    const all = res.data.filter(
+      challenge =>
+        !created.includes(challenge) && !completed.includes(challenge)
+    );
     const myChallenges = { all, created, opened, completed };
 
     dispatch({
