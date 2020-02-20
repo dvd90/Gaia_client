@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment, useState } from "react";
+import React, { useEffect, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getChallenge } from "../../actions/challenge";
@@ -12,31 +12,6 @@ const ShowChallenge = ({ getChallenge, challenge }) => {
     getChallenge(id);
   }, [getChallenge, id]);
 
-  const [renderChallenge, setRenderChallenge] = useState("");
-
-  if (challenge) {
-    setRenderChallenge(
-      <Fragment>
-        <div className="show-title">
-          <h2>{challenge.title}</h2>
-        </div>
-        <div className="show-points">
-          Gaia points: {challenge.gaia_points}{" "}
-          <i className="fas fa-globe-europe" />
-          <p className="show-description">{challenge.description}</p>
-          <div className="show-btns">
-            <Link to="/#!">
-              <Button className="radiant-green-btn show-btn">Accept</Button>
-            </Link>
-            <Link to="/challenges">
-              <Button className="radiant-purple-btn show-btn">Back</Button>
-            </Link>
-          </div>
-        </div>
-      </Fragment>
-    );
-  }
-
   return (
     <Fragment>
       <Navbar />
@@ -48,7 +23,28 @@ const ShowChallenge = ({ getChallenge, challenge }) => {
             border="0"
           />
         </div>
-        {renderChallenge}
+        {challenge ? (
+          <Fragment>
+            <div className="show-title">
+              <h2>{challenge.title}</h2>
+            </div>
+            <div className="show-points">
+              Gaia points: {challenge.gaia_points}{" "}
+              <i className="fas fa-globe-europe" />
+              <p className="show-description">{challenge.description}</p>
+              <div className="show-btns">
+                <Link to="/#!">
+                  <Button className="radiant-green-btn show-btn">Accept</Button>
+                </Link>
+                <Link to="/challenges">
+                  <Button className="radiant-purple-btn show-btn">Back</Button>
+                </Link>
+              </div>
+            </div>
+          </Fragment>
+        ) : (
+          ""
+        )}
       </div>
     </Fragment>
   );

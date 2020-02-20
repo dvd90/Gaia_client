@@ -17,13 +17,11 @@ import PrivateRoute from "./components/routing/PrivateRoute";
 // Challenges
 import Challenges from "./components/challenges/Challenges";
 import ShowChallenge from "./components/challenges/ShowChallenge";
+import CreateChallenge from "./components/challenges/CreateChallenge";
 
 // Challenges
 import Events from "./components/events/Events";
-
-// TEST
-import ChallengeCard from "./components/layout/ChallengeCard";
-import MapBox from "./components/layout/Mapbox";
+import CreateEvent from "./components/events/CreateEvent";
 
 // REDUX
 import { Provider } from "react-redux";
@@ -64,6 +62,16 @@ const App = () => {
               />
               <Route exact path="/events" component={Events} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute
+                exact
+                path="/create_event"
+                component={CreateEvent}
+              />
+              <PrivateRoute
+                exact
+                path="/create_challenge"
+                component={CreateChallenge}
+              />
             </Switch>
           </Fragment>
         </Router>

@@ -38,11 +38,19 @@ body {
   height: 75px;
 }
 
+#gaia-nav img {
+  height: 60px;
+}
+
 #gaia-nav-open {
   display: block;
   align-items: baseline;
   background-color: #ffffff;
   height: 475px;
+}
+
+#gaia-nav-open img {
+  height: 60px;
 }
 
 .nav-hamburger {
@@ -244,7 +252,7 @@ body {
 
 .alert {
   padding: 0.8rem;
-  margin: 1rem 0;
+  margin: 5rem 10px;
   border-radius: 8px;
   opacity: 0.9;
   font-family: var(--main-font);
@@ -481,4 +489,14 @@ body {
   font-size: 14px;
   line-height: 24px;
   color: rgba(31, 32, 65, 0.75);
+}
+
+/* Challenge Create Form */
+
+.create-challenge-form {
+  margin-top: 5vh;
+}
+
+.create-challenge-form .MuiInput-underline {
+  margin-bottom: 40px;
 }
