@@ -153,7 +153,11 @@ const ShowChallenge = ({
         )}
         {!isOpened(id) && !isCompleted(id) && buttonNotOpened}
         {isOpened(id) && !isCompleted(id) && buttonOpened}
-        {isCompleted(id) && "Challenge Completed"}
+        {isCompleted(id) && (
+          <div className="show-title">
+            <h2>Challenge Completed</h2>
+          </div>
+        )}
       </div>
     </Fragment>
   );

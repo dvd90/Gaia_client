@@ -22,9 +22,9 @@ const Dashboard = ({
     }
   }, [getAllMyChallenges, isAuthenticated, user]);
 
-  const [tab, setTab] = useState(1);
-  const [tabCreated, setTabCreated] = useState("selected");
-  const [tabAll, setTabAll] = useState("");
+  const [tab, setTab] = useState(2);
+  const [tabCreated, setTabCreated] = useState("");
+  const [tabAll, setTabAll] = useState("selected");
   const [tabCompleted, setTabCompleted] = useState("");
   const [tabOpened, setTabOpened] = useState("");
 
