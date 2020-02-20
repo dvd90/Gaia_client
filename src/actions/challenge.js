@@ -56,7 +56,9 @@ export const getAllMyChallenges = user_id => async dispatch => {
       })
     );
 
-    const myChallenges = { created, opened, completed };
+    const all = res.data;
+
+    const myChallenges = { all, created, opened, completed };
 
     dispatch({
       type: GET_MY_CHALLENGES,

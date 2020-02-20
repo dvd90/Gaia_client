@@ -3,16 +3,13 @@ import { connect } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
 import { setAlert } from "../../actions/alert";
 import Navbar from "../layout/Navbar";
-import PropTypes from "prop-types";
-import Slider from "@material-ui/core/Slider";
 import axios from "axios";
+import Calendar from "ciqu-react-calendar";
 
-const CreateEvent = props => {
+const CreateEvent = ({ setAlert }) => {
   const history = useHistory();
   const [formData, setFormData] = useState({
     title: "",
@@ -22,21 +19,56 @@ const CreateEvent = props => {
     description: ""
   });
 
-  const { title, location, description, starts_at, ends_at } = formData;
+  const { title, location, description } = formData;
 
   const onChange = e => {
-    if (e.type === "touchmove") {
-      setFormData({ ...formData, gaia_points: e.srcElement.textContent });
-    } else {
-      setFormData({ ...formData, [e.target.name]: e.target.value });
-    }
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const onChangeStarts = e => {
+    setFormData({ ...formData, starts_at: e.format("MM-DD-YYYY") });
+  };
+
+  const onChangeEnds = e => {
+    setFormData({ ...formData, ends_at: e.format("MM-DD-YYYY") });
   };
 
   const onSubmit = async e => {
     e.preventDefault();
-    console.log(formData);
-  };
+    if (
+      title !== "" &&
+      description !== "" &&
+      location !== "" &&
+      formData.starts_at !== "" &&
+      formData.ends_at !== ""
+    ) {
+      console.log("axios call :)", formData);
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          "x-auth-token": localStorage.token
+        }
+      };
 
+      try {
+        const res = await axios.post(
+          "https://gaia-mern-app.herokuapp.com/api/events",
+          formData,
+          config
+        );
+        console.log("working", res.data);
+        history.push(`/events/${res.data._id}`);
+      } catch (err) {
+        const errors = err.response.data.errors;
+
+        if (errors) {
+          errors.forEach(error => setAlert(error.msg, "danger"));
+        }
+      }
+    } else {
+      setAlert("All the inputs are required", "danger");
+    }
+  };
   return (
     <Fragment>
       <Navbar /> <div className="nav-margin"></div>
@@ -55,7 +87,43 @@ const CreateEvent = props => {
             value={title}
             onChange={e => onChange(e)}
           />
+          <TextField
+            label="Location"
+            type="location"
+            name="location"
+            value={location}
+            onChange={e => onChange(e)}
+          />
+          <TextField
+            label="Description"
+            type="description"
+            name="description"
+            value={description}
+            onChange={e => onChange(e)}
+          />
+          <div className="date-event-picker">
+            <InputLabel id="demo-simple-select-label">
+              Date of the event
+            </InputLabel>
 
+            <Calendar
+              className="date-picker"
+              allowClear={true}
+              disabled={false}
+              placeholder={"Start date"}
+              format={"MM-DD-YYYY"}
+              onChange={e => onChangeStarts(e)}
+            />
+
+            <Calendar
+              className="date-picker"
+              allowClear={true}
+              disabled={false}
+              placeholder={"End date"}
+              format={"MM-DD-YYYY"}
+              onChange={e => onChangeEnds(e)}
+            />
+          </div>
           <div className="landing-btns">
             <Button type="submit" className="radiant-green-btn">
               Submit
@@ -71,5 +139,4 @@ const CreateEvent = props => {
 };
 
 CreateEvent.propTypes = {};
-
-export default CreateEvent;
+export default connect(null, { setAlert })(CreateEvent);

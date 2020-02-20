@@ -500,3 +500,9 @@ body {
 .create-challenge-form .MuiInput-underline {
   margin-bottom: 40px;
 }
+
+/* Event Create Form */
+
+.date-event-picker label {
+  margin-top: 30px;
+}

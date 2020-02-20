@@ -19,7 +19,8 @@ import Challenges from "./components/challenges/Challenges";
 import ShowChallenge from "./components/challenges/ShowChallenge";
 import CreateChallenge from "./components/challenges/CreateChallenge";
 
-// Challenges
+// Events
+import ShowEvent from "./components/events/ShowEvent";
 import Events from "./components/events/Events";
 import CreateEvent from "./components/events/CreateEvent";
 
@@ -60,6 +61,7 @@ const App = () => {
                 path="/challenges/:id"
                 component={ShowChallenge}
               />
+              <PrivateRoute exact path="/events/:id" component={ShowEvent} />
               <Route exact path="/events" component={Events} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute

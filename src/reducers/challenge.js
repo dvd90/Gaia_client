@@ -21,6 +21,7 @@ export default function(state = initialState, action) {
     case GET_MY_CHALLENGES:
       return {
         ...state,
+        challenges: payload.all,
         challengeCreated: payload.created,
         challengeOpened: payload.opened,
         challengeCompleted: payload.completed,

@@ -10,6 +10,7 @@ const Dashboard = ({
   getAllMyChallenges,
   isAuthenticated,
   user,
+  challenges,
   challengeCreated,
   challengeCompleted,
   challengeOpened
@@ -31,21 +32,26 @@ const Dashboard = ({
         }
       />
       <div className="header-challenges">
-        {challengeOpened.length > 0 ? (
+        {challengeOpened.length > 0 && challenges ? (
           <Fragment>
-            <h3>Created Challenges</h3>
+            <h3>Opened Challenges</h3>
             {challengeOpened.map(challenge => (
               <ChallengeCard component={challenge} key={challenge._id} />
             ))}
           </Fragment>
         ) : (
-          ""
+          <Fragment>
+            <h3>You didn't start yet...</h3>
+            {challenges.map(challenge => (
+              <ChallengeCard component={challenge} key={challenge._id} />
+            ))}
+          </Fragment>
         )}
       </div>
       <div className="header-challenges">
         {challengeCompleted.length > 0 ? (
           <Fragment>
-            <h3>Created Challenges</h3>
+            <h3>Completed Challenges</h3>
             {challengeCompleted.map(challenge => (
               <ChallengeCard component={challenge} key={challenge._id} />
             ))}
@@ -78,6 +84,7 @@ Dashboard.propTypes = {
 const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated,
   user: state.auth.user,
+  challenges: state.challenge.challenges,
   challengeCreated: state.challenge.challengeCreated,
   challengeCompleted: state.challenge.challengeCompleted,
   challengeOpened: state.challenge.challengeOpened
