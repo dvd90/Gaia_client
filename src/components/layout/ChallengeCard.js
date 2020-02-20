@@ -4,7 +4,34 @@ import Rater from "react-rater";
 import PropTypes from "prop-types";
 import "react-rater/lib/react-rater.css";
 
-const ChallengeCard = ({ component, challengeOpened }) => {
+const ChallengeCard = ({ component }) => {
+  const showImage = component => {
+    let image = "";
+    if (component.category === "Waste") {
+      image = (
+        <img
+          src="https://i.ibb.co/YTZTCB5/jasmin-sessler-5-Wfttm2-Cje-I-unsplash.jpg"
+          alt=""
+        />
+      );
+    } else if (component.category === "Energy") {
+      image = (
+        <img
+          src="https://i.ibb.co/qpdzF74/gonz-ddl-a1-Lm99-Kkqtg-unsplash.jpg"
+          alt=""
+        />
+      );
+    } else {
+      image = (
+        <img
+          src="https://i.ibb.co/SV2ktWy/paolo-chiabrando-KSwd2lb3lfs-unsplash.jpg"
+          alt=""
+        />
+      );
+    }
+    return image;
+  };
+
   return (
     <Fragment>
       {!component ? (
@@ -12,12 +39,7 @@ const ChallengeCard = ({ component, challengeOpened }) => {
       ) : (
         <Link to={`challenges/${component._id}`}>
           <div className="challenge_card">
-            <div className="img_challenge">
-              <img
-                src="https://i.hurimg.com/i/hdn/75/0x0/5db68d3e67b0a91de849d9a6.jpg"
-                alt=""
-              />
-            </div>
+            <div className="img_challenge">{showImage(component)}</div>
             <div className="challenge_info">
               <h2 className="challenge_title">{component.title}</h2>
               <p className="Challenge_impact"> Impact </p>

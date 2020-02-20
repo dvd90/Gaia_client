@@ -1,5 +1,6 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import Navbar from "../layout/Navbar";
 import CardUser from "./CardUser";
@@ -21,6 +22,51 @@ const Dashboard = ({
     }
   }, [getAllMyChallenges, isAuthenticated, user]);
 
+  const [tab, setTab] = useState(1);
+  const [tabCreated, setTabCreated] = useState("selected");
+  const [tabAll, setTabAll] = useState("");
+  const [tabCompleted, setTabCompleted] = useState("");
+  const [tabOpened, setTabOpened] = useState("");
+
+  const onTabMenuClick = e => {
+    if (e === 1) {
+      setTabCreated("selected");
+      setTabAll("");
+      setTabCompleted("");
+      setTabOpened("");
+    } else if (e === 2) {
+      setTabCreated("");
+      setTabAll("selected");
+      setTabCompleted("");
+      setTabOpened("");
+    } else if (e === 3) {
+      setTabCreated("");
+      setTabAll("");
+      setTabCompleted("selected");
+      setTabOpened("");
+    } else {
+      setTabCreated("");
+      setTabAll("");
+      setTabCompleted("");
+      setTabOpened("selected");
+    }
+    setTab(e);
+  };
+
+  const createTab = elements => {
+    return (
+      <Fragment>
+        {elements.map(element => (
+          <ChallengeCard component={element} key={element._id} />
+        ))}
+      </Fragment>
+    );
+  };
+  const listTabCreated = createTab(challengeCreated);
+  const listTabCompleted = createTab(challengeCompleted);
+  const listTabOpened = createTab(challengeOpened);
+  const listTabAll = createTab(challenges);
+
   return (
     <Fragment>
       <Navbar /> <div className="nav-margin"></div>
@@ -32,46 +78,34 @@ const Dashboard = ({
         }
       />
       <div className="header-challenges">
-        {challengeOpened.length > 0 && challenges ? (
-          <Fragment>
-            <h3>Opened Challenges</h3>
-            {challengeOpened.map(challenge => (
-              <ChallengeCard component={challenge} key={challenge._id} />
-            ))}
-          </Fragment>
-        ) : (
-          <Fragment>
-            <h3>You didn't start yet...</h3>
-            {challenges.map(challenge => (
-              <ChallengeCard component={challenge} key={challenge._id} />
-            ))}
-          </Fragment>
-        )}
+        <h3>Challenges</h3>
       </div>
-      <div className="header-challenges">
-        {challengeCompleted.length > 0 ? (
-          <Fragment>
-            <h3>Completed Challenges</h3>
-            {challengeCompleted.map(challenge => (
-              <ChallengeCard component={challenge} key={challenge._id} />
-            ))}
-          </Fragment>
-        ) : (
-          ""
-        )}
+      <div className="events-tabs">
+        <div className={`tab-link tab-link-dasboard ${tabAll}`}>
+          <Link to="#!" onClick={e => onTabMenuClick(2)}>
+            All
+          </Link>
+        </div>
+        <div className={`tab-link tab-link-dasboard ${tabCreated}`}>
+          <Link to="#!" onClick={e => onTabMenuClick(1)}>
+            Created
+          </Link>
+        </div>
+        <div className={`tab-link tab-link-dasboard ${tabCompleted}`}>
+          <Link to="#!" onClick={e => onTabMenuClick(3)}>
+            Completed
+          </Link>
+        </div>
+        <div className={`tab-link tab-link-dasboard ${tabOpened}`}>
+          <Link to="#!" onClick={e => onTabMenuClick(4)}>
+            Opened
+          </Link>
+        </div>
       </div>
-      <div className="header-challenges">
-        {challengeCreated.length > 0 ? (
-          <Fragment>
-            <h3>Created Challenges</h3>
-            {challengeCreated.map(challenge => (
-              <ChallengeCard component={challenge} key={challenge._id} />
-            ))}
-          </Fragment>
-        ) : (
-          ""
-        )}
-      </div>
+      {tab === 1 && listTabCreated}
+      {tab === 2 && listTabAll}
+      {tab === 3 && listTabCompleted}
+      {tab === 4 && listTabOpened}
     </Fragment>
   );
 };
