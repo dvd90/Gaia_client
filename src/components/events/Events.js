@@ -59,7 +59,7 @@ const Events = ({ getAllEvents, events }) => {
         </div>
       </div>
       {tab === 1 ? listTab : mapTab}
-      <Link to="/create_events">
+      <Link to="/create_event">
         <div className="landing-btns new-btn-cont">
           <Button className="radiant-purple-btn new-btn">
             Create a new event +

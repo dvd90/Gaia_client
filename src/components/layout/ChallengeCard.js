@@ -1,14 +1,15 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import Rater from "react-rater";
 import PropTypes from "prop-types";
 import "react-rater/lib/react-rater.css";
 
 const ChallengeCard = ({ component }) => {
-  const [renderCard, setRenderCard] = useState("");
-  if (component) {
-    setRenderCard(
-      <Fragment>
+  return (
+    <Fragment>
+      {!component ? (
+        ""
+      ) : (
         <Link to={`challenges/${component._id}`}>
           <div className="challenge_card">
             <div className="img_challenge">
@@ -31,10 +32,9 @@ const ChallengeCard = ({ component }) => {
             </div>
           </div>
         </Link>
-      </Fragment>
-    );
-  }
-  return <Fragment>{renderCard}</Fragment>;
+      )}
+    </Fragment>
+  );
 };
 
 ChallengeCard.propTypes = {
