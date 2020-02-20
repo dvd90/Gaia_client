@@ -2,8 +2,10 @@ import {
   CHALLENGES_ERROR,
   GET_ALL_CHALLENGES,
   GET_CHALLENGE,
-  GET_MY_CHALLENGES
-} from "../actions/types";
+  GET_MY_CHALLENGES,
+  DELETE_CHALLENGE,
+  CLEAR_CHALLENGES
+} from '../actions/types';
 
 const initialState = {
   challenge: null,
@@ -39,6 +41,17 @@ export default function(state = initialState, action) {
         challenge: payload,
         loading: false
       };
+    case DELETE_CHALLENGE:
+      return {
+        ...state,
+        challenge: state.challenge.filter(
+          challenge => challenge._id !== action.payload
+        ),
+        loading: false
+      };
+
+    //CLEAR_CHALLENGES
+
     case CHALLENGES_ERROR:
       return {
         ...state,
