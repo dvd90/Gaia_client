@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Navbar from "../layout/Navbar";
@@ -20,61 +20,52 @@ const Dashboard = ({
     }
   }, [getAllMyChallenges, isAuthenticated, user]);
 
-  const [renderCreatedChallenges, setRenderCreatedChallenges] = useState("");
-
-  if (challengeCreated.length > 0) {
-    setRenderCreatedChallenges(
-      <Fragment>
-        <h3>Created Challenges</h3>
-        {challengeCreated.map(challenge => (
-          <ChallengeCard component={challenge} key={challenge._id} />
-        ))}
-      </Fragment>
-    );
-  }
-
-  const [nbChallengeOpen, setNbChallengeOpen] = useState(0);
-  const [renderOpenedChallenges, setRenderOpenedChallenges] = useState("");
-  if (challengeOpened.length > 0) {
-    setNbChallengeOpen(challengeOpened.length);
-    setRenderOpenedChallenges(
-      <Fragment>
-        <h3>Created Challenges</h3>
-        {challengeOpened.map(challenge => (
-          <ChallengeCard component={challenge} key={challenge._id} />
-        ))}
-      </Fragment>
-    );
-  }
-
-  const [nbChallengeCompleted, setNbChallengeCompleted] = useState(0);
-  const [renderCompletedChallenges, setRenderCompletedChallenges] = useState(
-    ""
-  );
-  if (challengeCompleted.length > 0) {
-    setNbChallengeCompleted(challengeCompleted.length);
-    setRenderCompletedChallenges(
-      <Fragment>
-        <h3>Created Challenges</h3>
-        {challengeCompleted.map(challenge => (
-          <ChallengeCard component={challenge} key={challenge._id} />
-        ))}
-      </Fragment>
-    );
-  }
-
   return (
     <Fragment>
       <Navbar /> <div className="nav-margin"></div>
-      {/* Get the user infos */}
       <CardUser
         component={user}
-        opened={nbChallengeOpen}
-        completed={nbChallengeCompleted}
+        opened={challengeOpened.length > 0 ? challengeOpened.length : 0}
+        completed={
+          challengeCompleted.length > 0 ? challengeCompleted.length : 0
+        }
       />
-      <div className="header-challenges">{renderOpenedChallenges}</div>
-      <div className="header-challenges">{renderCompletedChallenges}</div>
-      <div className="header-challenges">{renderCreatedChallenges}</div>
+      <div className="header-challenges">
+        {challengeOpened.length > 0 ? (
+          <Fragment>
+            <h3>Created Challenges</h3>
+            {challengeOpened.map(challenge => (
+              <ChallengeCard component={challenge} key={challenge._id} />
+            ))}
+          </Fragment>
+        ) : (
+          ""
+        )}
+      </div>
+      <div className="header-challenges">
+        {challengeCompleted.length > 0 ? (
+          <Fragment>
+            <h3>Created Challenges</h3>
+            {challengeCompleted.map(challenge => (
+              <ChallengeCard component={challenge} key={challenge._id} />
+            ))}
+          </Fragment>
+        ) : (
+          ""
+        )}
+      </div>
+      <div className="header-challenges">
+        {challengeCreated.length > 0 ? (
+          <Fragment>
+            <h3>Created Challenges</h3>
+            {challengeCreated.map(challenge => (
+              <ChallengeCard component={challenge} key={challenge._id} />
+            ))}
+          </Fragment>
+        ) : (
+          ""
+        )}
+      </div>
     </Fragment>
   );
 };

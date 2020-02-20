@@ -429,6 +429,10 @@ body {
   color: #9fa0a8;
 }
 
+.tab-link-challenge a {
+  font-size: 20px;
+}
+
 .selected a {
   color: #000000;
   font-weight: bold !important;

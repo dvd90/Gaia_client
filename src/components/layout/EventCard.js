@@ -3,27 +3,29 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const EventCard = ({ component }) => {
-  const [renderCard, setRenderCard] = useState("");
-  if (component) {
-    setRenderCard(
-      <Fragment>
-        <Link to={`events/${component._id}`}>
-          <div className="challenge_card">
-            <div className="img_challenge">
-              <img
-                src="https://i.hurimg.com/i/hdn/75/0x0/5db68d3e67b0a91de849d9a6.jpg"
-                alt=""
-              />
+  return (
+    <Fragment>
+      {!component ? (
+        ""
+      ) : (
+        <Fragment>
+          <Link to={`events/${component._id}`}>
+            <div className="challenge_card">
+              <div className="img_challenge">
+                <img
+                  src="https://i.hurimg.com/i/hdn/75/0x0/5db68d3e67b0a91de849d9a6.jpg"
+                  alt=""
+                />
+              </div>
+              <div className="challenge_info">
+                <h2 className="challenge_title">{component.title}</h2>
+              </div>
             </div>
-            <div className="challenge_info">
-              <h2 className="challenge_title">{component.title}</h2>
-            </div>
-          </div>
-        </Link>
-      </Fragment>
-    );
-  }
-  return <Fragment>{renderCard}</Fragment>;
+          </Link>
+        </Fragment>
+      )}
+    </Fragment>
+  );
 };
 
 EventCard.propTypes = {
