@@ -5,8 +5,7 @@ import {
   GET_ALL_CHALLENGES,
   GET_CHALLENGE,
   GET_MY_CHALLENGES,
-  DELETE_CHALLENGE,
-  CLEAR_CHALLENGES
+  DELETE_CHALLENGE
 } from '../actions/types';
 
 // Load All Challenges
@@ -95,9 +94,15 @@ export const getChallenge = id => async dispatch => {
 
 // Delete A Challenge
 export const deleteChallenge = id => async dispatch => {
+  const config = {
+    headers: {
+      'x-auth-token': localStorage.token
+    }
+  };
   try {
     await axios.delete(
-      `https://gaia-mern-app.herokuapp.com/api/challenges/delete/${id}`
+      `https://gaia-mern-app.herokuapp.com/api/challenges/${id}`,
+      config
     );
     dispatch({
       type: DELETE_CHALLENGE,
@@ -108,9 +113,4 @@ export const deleteChallenge = id => async dispatch => {
       type: CHALLENGES_ERROR
     });
   }
-};
-
-//clearChallenges
-export const clearChallenges = () => async dispatch => {
-  dispatch({ type: CLEAR_CHALLENGES });
 };
