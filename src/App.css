@@ -419,6 +419,10 @@ body {
   color: #1f2041;
 }
 
+.tab-link-dasboard a {
+  font-size: 16px !important;
+}
+
 /* Events */
 
 .events-tabs {

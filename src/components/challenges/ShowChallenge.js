@@ -6,7 +6,6 @@ import { useParams, Link, useHistory } from "react-router-dom";
 import Navbar from "../layout/Navbar";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
-import { setAlert } from "../../actions/alert";
 
 const ShowChallenge = ({
   getChallenge,
@@ -20,15 +19,40 @@ const ShowChallenge = ({
     getChallenge(id);
   }, [getChallenge, id]);
 
+  const showImage = component => {
+    let image = "";
+    if (component.category === "Waste") {
+      image = (
+        <img
+          src="https://i.ibb.co/YTZTCB5/jasmin-sessler-5-Wfttm2-Cje-I-unsplash.jpg"
+          alt=""
+        />
+      );
+    } else if (component.category === "Energy") {
+      image = (
+        <img
+          src="https://i.ibb.co/qpdzF74/gonz-ddl-a1-Lm99-Kkqtg-unsplash.jpg"
+          alt=""
+        />
+      );
+    } else {
+      image = (
+        <img
+          src="https://i.ibb.co/SV2ktWy/paolo-chiabrando-KSwd2lb3lfs-unsplash.jpg"
+          alt=""
+        />
+      );
+    }
+    return image;
+  };
+
   const isOpened = id => {
     let check = challengeOpened.filter(challenge => challenge._id === id);
-    console.log("opened", check.length > 0);
     return check.length > 0;
   };
 
   const isCompleted = id => {
     let check = challengeCompleted.filter(challenge => challenge._id === id);
-    console.log("completed", check.length > 0);
     return check.length > 0;
   };
 
@@ -114,13 +138,7 @@ const ShowChallenge = ({
     <Fragment>
       <Navbar />
       <div className="show-container">
-        <div className="show-banner">
-          <img
-            src="https://i.ibb.co/n64ZNw4/veeterzy-s-MQi-L-2v4vs-unsplash.jpg"
-            alt="veeterzy-s-MQi-L-2v4vs-unsplash"
-            border="0"
-          />
-        </div>
+        <div className="show-banner">{challenge && showImage(challenge)}</div>
         {challenge && (
           <Fragment>
             <div className="show-title">
@@ -135,7 +153,11 @@ const ShowChallenge = ({
         )}
         {!isOpened(id) && !isCompleted(id) && buttonNotOpened}
         {isOpened(id) && !isCompleted(id) && buttonOpened}
-        {isCompleted(id) && "Challenge Completed"}
+        {isCompleted(id) && (
+          <div className="show-title">
+            <h2>Challenge Completed</h2>
+          </div>
+        )}
       </div>
     </Fragment>
   );
