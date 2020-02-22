@@ -29,9 +29,9 @@ export default function(state = initialState, action) {
     case GET_MY_EVENTS:
       return {
         ...state,
-        events: payload.all,
-        eventJoined: payload.joined,
-        eventCreated: payload.created,
+        events: payload[0],
+        eventCreated: payload[1],
+        eventJoined: payload[2],
         loading: false
       };
     case GET_ALL_EVENTS:
