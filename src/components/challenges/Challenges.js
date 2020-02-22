@@ -1,11 +1,11 @@
-import React, { useEffect, Fragment, useState } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { getAllChallenges } from '../../actions/challenge';
-import PropTypes from 'prop-types';
-import Navbar from '../layout/Navbar';
-import ChallengeCard from '../layout/ChallengeCard';
-import Button from '@material-ui/core/Button';
+import React, { useEffect, Fragment, useState } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { getAllChallenges } from "../../actions/challenge";
+import PropTypes from "prop-types";
+import Navbar from "../layout/Navbar";
+import ChallengeCard from "../layout/ChallengeCard";
+import Button from "@material-ui/core/Button";
 
 const Challenges = ({ getAllChallenges, challenges }) => {
   useEffect(() => {
@@ -13,23 +13,23 @@ const Challenges = ({ getAllChallenges, challenges }) => {
   }, [getAllChallenges]);
 
   const [tab, setTab] = useState(1);
-  const [tabWaste, setTabWaste] = useState('selected');
-  const [tabEnergy, setTabEnergy] = useState('');
-  const [tabTransport, setTabTransport] = useState('');
+  const [tabWaste, setTabWaste] = useState("selected");
+  const [tabEnergy, setTabEnergy] = useState("");
+  const [tabTransport, setTabTransport] = useState("");
 
   const onTabMenuClick = e => {
     if (e === 1) {
-      setTabWaste('selected');
-      setTabEnergy('');
-      setTabTransport('');
+      setTabWaste("selected");
+      setTabEnergy("");
+      setTabTransport("");
     } else if (e === 2) {
-      setTabWaste('');
-      setTabEnergy('selected');
-      setTabTransport('');
+      setTabWaste("");
+      setTabEnergy("selected");
+      setTabTransport("");
     } else {
-      setTabWaste('');
-      setTabEnergy('');
-      setTabTransport('selected');
+      setTabWaste("");
+      setTabEnergy("");
+      setTabTransport("selected");
     }
     setTab(e);
   };
@@ -46,26 +46,26 @@ const Challenges = ({ getAllChallenges, challenges }) => {
     );
   };
 
-  const listTabWaste = filterBy('Waste');
-  const listTabEnergy = filterBy('Energy');
-  const listTabTransport = filterBy('Transport');
+  const listTabWaste = filterBy("Waste");
+  const listTabEnergy = filterBy("Energy");
+  const listTabTransport = filterBy("Transport");
 
   return (
     <Fragment>
-      <Navbar /> <div className='nav-margin'></div>
-      <div className='events-tabs'>
+      <Navbar /> <div className="nav-margin"></div>
+      <div className="events-tabs">
         <div className={`tab-link tab-link-challenge ${tabWaste}`}>
-          <Link to='#!' onClick={e => onTabMenuClick(1)}>
+          <Link to="#!" onClick={e => onTabMenuClick(1)}>
             Waste
           </Link>
         </div>
         <div className={`tab-link tab-link-challenge ${tabEnergy}`}>
-          <Link to='#!' onClick={e => onTabMenuClick(2)}>
+          <Link to="#!" onClick={e => onTabMenuClick(2)}>
             Energy
           </Link>
         </div>
         <div className={`tab-link tab-link-challenge ${tabTransport}`}>
-          <Link to='#!' onClick={e => onTabMenuClick(3)}>
+          <Link to="#!" onClick={e => onTabMenuClick(3)}>
             Transport
           </Link>
         </div>
@@ -73,9 +73,9 @@ const Challenges = ({ getAllChallenges, challenges }) => {
       {tab === 1 && listTabWaste}
       {tab === 2 && listTabEnergy}
       {tab === 3 && listTabTransport}
-      <Link to='/create_challenge'>
-        <div className='landing-btns new-btn-cont'>
-          <Button className='radiant-green-btn new-btn float-bottom'>
+      <Link to="/create_challenge">
+        <div className="landing-btns new-btn-cont">
+          <Button className="radiant-green-btn new-btn float-bottom">
             Create a new challenge +
           </Button>
         </div>

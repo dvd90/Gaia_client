@@ -56,7 +56,7 @@ const Navbar = ({ logout, auth }) => {
           {auth.isAuthenticated ? (
             <Fragment>
               <li className="item-menu">
-                <Link to="/dashboard">Profile</Link>
+                <Link to="/my_events">My Events</Link>
               </li>
               <li className="item-menu lgo-item">
                 <Link onClick={logout} to="#!">
