@@ -7,6 +7,7 @@ import Navbar from '../layout/Navbar';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 
 const ShowChallenge = ({
   getChallenge,
@@ -164,14 +165,20 @@ const ShowChallenge = ({
         {isCompletedChallenge && (
           <div className='show-title'>
             <h2>Challenge Completed</h2>
+            <Link to='/dashboard'>
+              <Button className='radiant-purple-btn show-btn'>Back</Button>
+            </Link>
           </div>
         )}
       </div>
-      {isMyChallenge ? (
-        <div className='deleteIcon'>
+      {isMyChallenge && (
+        <div className='createdIcons'>
+          <Link to={`/edit_challenge/${id}`}>
+            <EditIcon style={{ fontSize: 60 }} fill={'black'} />
+          </Link>
           <DeleteIcon style={{ fontSize: 60 }} onClick={onDelete} />
         </div>
-      ) : null}
+      )}
     </Fragment>
   );
 };
@@ -193,6 +200,7 @@ const mapStateToProps = state => ({
   user: state.auth.user
 });
 
-export default connect(mapStateToProps, { getChallenge, deleteChallenge })(
-  ShowChallenge
-);
+export default connect(mapStateToProps, {
+  getChallenge,
+  deleteChallenge
+})(ShowChallenge);
