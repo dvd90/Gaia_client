@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 // import { setAlert } from "./alert";
 import {
   EVENTS_ERROR,
@@ -6,13 +6,13 @@ import {
   GET_MY_EVENTS,
   GET_EVENT,
   DELETE_EVENT
-} from "../actions/types";
+} from '../actions/types';
 
 // Load All Events
 export const getAllEvents = () => async dispatch => {
   try {
     const res = await axios.get(
-      "https://gaia-mern-app.herokuapp.com/api/events"
+      'https://gaia-mern-app.herokuapp.com/api/events'
     );
 
     dispatch({
@@ -65,6 +65,12 @@ export const getEvent = (user_id, id) => async dispatch => {
       `https://gaia-mern-app.herokuapp.com/api/events/${id}`
     );
 
+    const joined = res.data.attendees.filter(event => event.user === user_id);
+    if (joined.length > 0) {
+      eventInfo.isJoinedEvent = true;
+    } else {
+      eventInfo.isJoinedEvent = false;
+    }
     if (res.data.creator === user_id) {
       eventInfo.isMyEvent = true;
     } else {
@@ -86,7 +92,7 @@ export const getEvent = (user_id, id) => async dispatch => {
 export const deleteEvent = id => async dispatch => {
   const config = {
     headers: {
-      "x-auth-token": localStorage.token
+      'x-auth-token': localStorage.token
     }
   };
   try {

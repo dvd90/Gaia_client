@@ -41,7 +41,7 @@ const ChallengeCard = ({ component }) => {
           <div className='challenge_card'>
             <div className='img_challenge'>{showImage(component)}</div>
             <div className='challenge_info'>
-              <h2 className='challenge_title'>{component.title}</h2>
+              <h2 className='challenge_title card-title'>{component.title}</h2>
               <p className='Challenge_impact'> Impact </p>
               <div className='stars'>
                 {' '}

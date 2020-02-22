@@ -1,61 +1,45 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import InputLabel from '@material-ui/core/InputLabel';
 import { setAlert } from '../../actions/alert';
 import Navbar from '../layout/Navbar';
+import PropTypes from 'prop-types';
 import axios from 'axios';
-import Calendar from 'ciqu-react-calendar';
 
-const CreateEvent = ({ setAlert }) => {
+const EditEvent = ({ setAlert, event }) => {
   const history = useHistory();
-  const [formData, setFormData] = useState({
-    title: '',
-    location: '',
-    starts_at: '',
-    ends_at: '',
-    description: ''
-  });
+  let { id } = useParams();
 
-  const { title, location, description } = formData;
+  const [title, setTitle] = useState('');
+  const [location, setLocation] = useState('');
+  const [description, setDescription] = useState('');
 
-  const onChange = e => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const onChangeStarts = e => {
-    setFormData({ ...formData, starts_at: e.format('MM-DD-YYYY') });
-  };
-
-  const onChangeEnds = e => {
-    setFormData({ ...formData, ends_at: e.format('MM-DD-YYYY') });
-  };
+  useEffect(() => {
+    if (event) {
+      setTitle(event.title);
+      setLocation(event.location);
+      setDescription(event.description);
+    }
+  }, [event]);
 
   const onSubmit = async e => {
     e.preventDefault();
-    if (
-      title !== '' &&
-      description !== '' &&
-      location !== '' &&
-      formData.starts_at !== '' &&
-      formData.ends_at !== ''
-    ) {
+    if (title !== '' && location !== '' && description !== '') {
       // Check size of title
       if (title.length < 24) {
-        console.log('axios call :)', formData);
         const config = {
           headers: {
             'Content-Type': 'application/json',
             'x-auth-token': localStorage.token
           }
         };
-
+        const body = { title, location, description };
         try {
-          const res = await axios.post(
-            'https://gaia-mern-app.herokuapp.com/api/events',
-            formData,
+          const res = await axios.put(
+            `https://gaia-mern-app.herokuapp.com/api/events/${id}`,
+            body,
             config
           );
           console.log('working', res.data);
@@ -74,6 +58,7 @@ const CreateEvent = ({ setAlert }) => {
       setAlert('All the inputs are required', 'danger');
     }
   };
+
   return (
     <Fragment>
       <Navbar /> <div className='nav-margin'></div>
@@ -90,50 +75,28 @@ const CreateEvent = ({ setAlert }) => {
             type='title'
             name='title'
             value={title}
-            onChange={e => onChange(e)}
+            onChange={e => setTitle(e.target.value)}
           />
           <TextField
             label='Location'
             type='location'
             name='location'
             value={location}
-            onChange={e => onChange(e)}
+            onChange={e => setLocation(e.target.value)}
           />
           <TextField
             label='Description'
             type='description'
             name='description'
             value={description}
-            onChange={e => onChange(e)}
+            onChange={e => setDescription(e.target.value)}
           />
-          <div className='date-event-picker'>
-            <InputLabel id='demo-simple-select-label'>
-              Date of the event
-            </InputLabel>
 
-            <Calendar
-              className='date-picker'
-              allowClear={true}
-              disabled={false}
-              placeholder={'Start date'}
-              format={'MM-DD-YYYY'}
-              onChange={e => onChangeStarts(e)}
-            />
-
-            <Calendar
-              className='date-picker'
-              allowClear={true}
-              disabled={false}
-              placeholder={'End date'}
-              format={'MM-DD-YYYY'}
-              onChange={e => onChangeEnds(e)}
-            />
-          </div>
           <div className='landing-btns'>
             <Button type='submit' className='radiant-green-btn'>
               Submit
             </Button>
-            <Link to='/'>
+            <Link to={`/events/${id}`}>
               <Button className='radiant-purple-btn'>Back</Button>
             </Link>
           </div>
@@ -142,6 +105,12 @@ const CreateEvent = ({ setAlert }) => {
     </Fragment>
   );
 };
+EditEvent.propTypes = {
+  setAlert: PropTypes.func.isRequired,
+  event: PropTypes.object
+};
+const mapStateToProps = state => ({
+  event: state.event.event
+});
 
-CreateEvent.propTypes = {};
-export default connect(null, { setAlert })(CreateEvent);
+export default connect(mapStateToProps, { setAlert })(EditEvent);
