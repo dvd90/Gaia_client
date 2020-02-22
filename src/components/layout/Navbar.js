@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import gaiaNav from "../../images/logonav.png";
@@ -9,10 +9,16 @@ import { logout } from "../../actions/auth";
 
 const Navbar = ({ logout, auth }) => {
   const [nav, setNav] = useState(true);
+  const history = useHistory();
+
+  const onClickLogout = e => {
+    logout();
+    history.push(`/`);
+  };
 
   const hamburger = (
     <Toolbar id="gaia-nav">
-      <Link to="/">
+      <Link to="/dashboard">
         <img src={gaiaNav} alt="gaia-logo-nav" />
       </Link>
       <div className="nav-hamburger">
@@ -29,7 +35,7 @@ const Navbar = ({ logout, auth }) => {
     <Toolbar id="gaia-nav-open">
       <div className="nav-hamburger">
         <div className="logo-nav-open">
-          <Link to="/">
+          <Link to="/dashboard">
             <img src={gaiaNav} alt="gaia-logo-nav" />
           </Link>
         </div>
@@ -59,7 +65,7 @@ const Navbar = ({ logout, auth }) => {
                 <Link to="/my_events">My Events</Link>
               </li>
               <li className="item-menu lgo-item">
-                <Link onClick={logout} to="#!">
+                <Link onClick={e => onClickLogout(e)} to="#!">
                   Log Out
                 </Link>
               </li>
