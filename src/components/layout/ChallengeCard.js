@@ -1,11 +1,8 @@
 import React, { Fragment } from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Rater from 'react-rater';
 import PropTypes from 'prop-types';
 import 'react-rater/lib/react-rater.css';
-import DeleteIcon from '@material-ui/icons/Delete';
-import { deleteChallenge } from '../../actions/challenge';
 
 const ChallengeCard = ({ component }) => {
   const showImage = component => {
@@ -58,14 +55,12 @@ const ChallengeCard = ({ component }) => {
           </div>
         </Link>
       )}
-      {/* <DeleteIcon onClick={deleteChallenge()} /> */}
     </Fragment>
   );
 };
 
 ChallengeCard.propTypes = {
-  component: PropTypes.object,
-  deleteChallenge: PropTypes.func.isRequired
+  component: PropTypes.object
 };
 
-export default connect(null, { deleteChallenge })(ChallengeCard);
+export default ChallengeCard;

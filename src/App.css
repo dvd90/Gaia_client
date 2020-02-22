@@ -95,9 +95,8 @@ body {
 
 .float-bottom {
   position: fixed !important;
-  bottom: 10px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
+  bottom: 0px;
+  transform: translateX(-50%);
 }
 .radiant-green-btn {
   margin-bottom: 2vh !important;
@@ -125,6 +124,11 @@ body {
   width: 256px;
   height: 54px;
   background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+}
+
+.deleteIcon {
+  margin-top: 60px;
+  text-align: center;
 }
 
 /* Landing Component */

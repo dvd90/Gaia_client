@@ -41,7 +41,7 @@ const CreateChallenge = ({ setAlert }) => {
       formData.gaia_points !== ''
     ) {
       // Check size of title
-      if (title < 24) {
+      if (title.length < 24) {
         console.log('axios call :)', formData);
         const config = {
           headers: {
