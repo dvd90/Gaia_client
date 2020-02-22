@@ -8,6 +8,7 @@ import Button from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
 import swal from "sweetalert";
 import axios from "axios";
+import moment from "moment";
 
 const ShowEvent = ({ getEvent, event, isMyEvent, deleteEvent, user }) => {
   const history = useHistory();
@@ -90,7 +91,9 @@ const ShowEvent = ({ getEvent, event, isMyEvent, deleteEvent, user }) => {
               <h2>{event.title}</h2>
             </div>
             <div className="show-points">
-              <p className="show-description">{event.starts_at}</p>
+              <p className="show-description">
+                {moment(event.starts_at).fromNow()}
+              </p>
               <p className="show-description">{event.location}</p>
               <p className="show-description">{event.description}</p>
               <div className="show-btns">
