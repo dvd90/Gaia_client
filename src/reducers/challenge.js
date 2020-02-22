@@ -3,9 +3,8 @@ import {
   GET_ALL_CHALLENGES,
   GET_CHALLENGE,
   GET_MY_CHALLENGES,
-  DELETE_CHALLENGE,
-  EDIT_CHALLENGE
-} from '../actions/types';
+  DELETE_CHALLENGE
+} from "../actions/types";
 
 const initialState = {
   challenge: null,
@@ -52,12 +51,6 @@ export default function(state = initialState, action) {
         ...state,
         loading: false
       };
-    case EDIT_CHALLENGE:
-      return {
-        ...state,
-        loading: false
-      };
-
     case CHALLENGES_ERROR:
       return {
         ...state,

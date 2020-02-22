@@ -1,19 +1,18 @@
-import axios from 'axios';
+import axios from "axios";
 // import { setAlert } from "./alert";
 import {
   CHALLENGES_ERROR,
   GET_ALL_CHALLENGES,
   GET_CHALLENGE,
   GET_MY_CHALLENGES,
-  DELETE_CHALLENGE,
-  EDIT_CHALLENGE
-} from '../actions/types';
+  DELETE_CHALLENGE
+} from "../actions/types";
 
 // Load All Challenges
 export const getAllChallenges = () => async dispatch => {
   try {
     const res = await axios.get(
-      'https://gaia-mern-app.herokuapp.com/api/challenges'
+      "https://gaia-mern-app.herokuapp.com/api/challenges"
     );
 
     dispatch({
@@ -42,7 +41,7 @@ export const getAllMyChallenges = user_id => async dispatch => {
 
     res.data.forEach(challenge =>
       challenge.joined_by.forEach(join => {
-        if (join.user === user_id && join.status === 'In Progress') {
+        if (join.user === user_id && join.status === "In Progress") {
           opened.push(challenge);
         }
       })
@@ -52,7 +51,7 @@ export const getAllMyChallenges = user_id => async dispatch => {
 
     res.data.forEach(challenge =>
       challenge.joined_by.forEach(join => {
-        if (join.user === user_id && join.status === 'Completed') {
+        if (join.user === user_id && join.status === "Completed") {
           completed.push(challenge);
         }
       })
@@ -92,7 +91,7 @@ export const getChallenge = (user_id, id) => async dispatch => {
     const join = res.data.joined_by.filter(j => j.user === user_id);
 
     if (join.length !== 0) {
-      if (join[0].status === 'In Progress') {
+      if (join[0].status === "In Progress") {
         challengeInfo.isOpenedChallenge = true;
         challengeInfo.isCompletedChallenge = false;
       } else {
@@ -119,7 +118,7 @@ export const getChallenge = (user_id, id) => async dispatch => {
 export const deleteChallenge = id => async dispatch => {
   const config = {
     headers: {
-      'x-auth-token': localStorage.token
+      "x-auth-token": localStorage.token
     }
   };
   try {
@@ -129,28 +128,6 @@ export const deleteChallenge = id => async dispatch => {
     );
     dispatch({
       type: DELETE_CHALLENGE,
-      payload: id
-    });
-  } catch (err) {
-    dispatch({
-      type: CHALLENGES_ERROR
-    });
-  }
-};
-// Edit A Challenge
-export const editChallenge = id => async dispatch => {
-  const config = {
-    headers: {
-      'x-auth-token': localStorage.token
-    }
-  };
-  try {
-    await axios.put(
-      `https://gaia-mern-app.herokuapp.com/api/challenges/${id}`,
-      config
-    );
-    dispatch({
-      type: EDIT_CHALLENGE,
       payload: id
     });
   } catch (err) {
