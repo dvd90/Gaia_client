@@ -3,6 +3,7 @@ import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { useHistory } from "react-router-dom";
+import swal from "sweetalert";
 
 const Mapbox = ({ events }) => {
   const history = useHistory();
@@ -25,7 +26,15 @@ const Mapbox = ({ events }) => {
   };
 
   const onClickMarker = (event, e) => {
-    history.push(`/events/${event._id}`);
+    swal({
+      title: `${event.title}`,
+      text: `${event.description}`,
+      buttons: true
+    }).then(click => {
+      if (click) {
+        history.push(`/events/${event._id}`);
+      }
+    });
   };
 
   return (
