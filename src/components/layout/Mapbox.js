@@ -1,11 +1,41 @@
-import React, { useState } from "react";
-import ReactMapboxGl, { Layer, Feature, Marker } from "react-mapbox-gl";
+import React from "react";
+import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { useHistory } from "react-router-dom";
+import swal from "sweetalert";
 
-const Mapbox = () => {
+const Mapbox = ({ events }) => {
+  const history = useHistory();
   const mapStyle = { link: "mapbox://styles/dvd90/ck6dgjim00pgp1isan89qwfig" };
   const Map = ReactMapboxGl({
     accessToken: process.env.REACT_APP_MAP_BOX_KEY
   });
+
+  const createMarkers = eventsList => {
+    return eventsList.map(event => (
+      <Layer
+        type="symbol"
+        layout={{ "icon-image": "globe-15", "icon-size": 2 }}
+        onClick={e => onClickMarker(event, e)}
+        key={event._id}
+      >
+        <Feature coordinates={event.coords.coordinates} />
+      </Layer>
+    ));
+  };
+
+  const onClickMarker = (event, e) => {
+    swal({
+      title: `${event.title}`,
+      text: `${event.description}`,
+      buttons: true
+    }).then(click => {
+      if (click) {
+        history.push(`/events/${event._id}`);
+      }
+    });
+  };
 
   return (
     <Map
@@ -16,8 +46,18 @@ const Mapbox = () => {
       }}
       className="gaia-map"
       center={[34.80287, 32.090252]}
-    ></Map>
+    >
+      {createMarkers(events)}
+    </Map>
   );
 };
 
-export default Mapbox;
+Mapbox.propTypes = {
+  events: PropTypes.array.isRequired
+};
+
+const mapStateToProps = state => ({
+  events: state.event.events
+});
+
+export default connect(mapStateToProps, {})(Mapbox);

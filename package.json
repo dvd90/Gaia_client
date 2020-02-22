@@ -11,6 +11,7 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
     "ciqu-react-calendar": "^1.0.2",
+    "geocoder": "^0.2.3",
     "mapbox-gl": "^1.7.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -23,6 +24,7 @@
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
+    "sweetalert": "^2.1.2",
     "uuid": "^3.4.0"
   },
   "scripts": {
