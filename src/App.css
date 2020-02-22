@@ -93,6 +93,11 @@ body {
 
 /* buttons */
 
+.float-bottom {
+  position: fixed !important;
+  bottom: 0px;
+  transform: translateX(-50%);
+}
 .radiant-green-btn {
   margin-bottom: 2vh !important;
   border-radius: 7px !important;
@@ -121,6 +126,11 @@ body {
   background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
 }
 
+.deleteIcon {
+  margin-top: 60px;
+  text-align: center;
+}
+
 /* Landing Component */
 
 .landing-btns {
@@ -147,7 +157,7 @@ body {
 }
 
 .quote {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   font-style: italic;
   text-transform: uppercase;
@@ -157,7 +167,7 @@ body {
 .quote-author {
   text-transform: uppercase;
   font-size: 16px;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 700;
   margin-top: 0;
 }
@@ -222,7 +232,7 @@ body {
 }
 
 .digit-quiz-result {
-  font-family: "Quicksand", sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-size: 60px;
 }
 
@@ -307,15 +317,17 @@ body {
   margin: auto;
   display: flex;
   margin-bottom: 2vh;
+  padding-right: -10px;
 }
 .challenge_title {
-  font-family: "Quicksand";
+  font-family: 'Quicksand';
   font-weight: medium;
   color: #384f7d;
   font-size: 16px;
+  margin-right: 3px;
 }
 .Challenge_impact {
-  font-family: "Montserrat";
+  font-family: 'Montserrat';
   font-style: normal;
   font-weight: normal;
   font-size: 14px;

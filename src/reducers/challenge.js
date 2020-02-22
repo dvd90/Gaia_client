@@ -2,8 +2,9 @@ import {
   CHALLENGES_ERROR,
   GET_ALL_CHALLENGES,
   GET_CHALLENGE,
-  GET_MY_CHALLENGES
-} from "../actions/types";
+  GET_MY_CHALLENGES,
+  DELETE_CHALLENGE
+} from '../actions/types';
 
 const initialState = {
   challenge: null,
@@ -39,6 +40,14 @@ export default function(state = initialState, action) {
         challenge: payload,
         loading: false
       };
+    case DELETE_CHALLENGE:
+      return {
+        ...state,
+        loading: false
+      };
+
+    //CLEAR_CHALLENGES
+
     case CHALLENGES_ERROR:
       return {
         ...state,
