@@ -9,6 +9,7 @@ import axios from "axios";
 import DeleteIcon from "@material-ui/icons/Delete";
 import swal from "sweetalert";
 
+
 const ShowChallenge = ({
   getChallenge,
   challenge,
@@ -200,14 +201,20 @@ const ShowChallenge = ({
         {isCompletedChallenge && (
           <div className="show-title">
             <h2>Challenge Completed</h2>
+            <Link to='/dashboard'>
+              <Button className='radiant-purple-btn show-btn'>Back</Button>
+            </Link>
           </div>
         )}
       </div>
-      {isMyChallenge ? (
-        <div className="deleteIcon">
+      {isMyChallenge && (
+        <div className='createdIcons'>
+          <Link to={`/edit_challenge/${id}`}>
+            <EditIcon style={{ fontSize: 60 }} />
+          </Link>
           <DeleteIcon style={{ fontSize: 60 }} onClick={onDelete} />
         </div>
-      ) : null}
+      )}
     </Fragment>
   );
 };
@@ -229,6 +236,7 @@ const mapStateToProps = state => ({
   user: state.auth.user
 });
 
-export default connect(mapStateToProps, { getChallenge, deleteChallenge })(
-  ShowChallenge
-);
+export default connect(mapStateToProps, {
+  getChallenge,
+  deleteChallenge
+})(ShowChallenge);

@@ -126,9 +126,13 @@ body {
   background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
 }
 
-.deleteIcon {
+.createdIcons {
   margin-top: 60px;
   text-align: center;
+}
+.createdIcons > svg {
+  margin-right: 30px;
+  margin-left: 30px;
 }
 
 /* Landing Component */
