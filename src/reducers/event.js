@@ -4,7 +4,7 @@ import {
   GET_MY_EVENTS,
   GET_EVENT,
   DELETE_EVENT
-} from '../actions/types';
+} from "../actions/types";
 
 const initialState = {
   event: null,
@@ -29,6 +29,7 @@ export default function(state = initialState, action) {
     case GET_MY_EVENTS:
       return {
         ...state,
+        events: payload.all,
         eventJoined: payload.joined,
         eventCreated: payload.created,
         loading: false
