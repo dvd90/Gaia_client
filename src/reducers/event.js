@@ -2,11 +2,13 @@ import {
   EVENTS_ERROR,
   GET_ALL_EVENTS,
   GET_MY_EVENTS,
-  GET_EVENT
-} from "../actions/types";
+  GET_EVENT,
+  DELETE_EVENT
+} from '../actions/types';
 
 const initialState = {
   event: null,
+  isMyEvent: null,
   events: [],
   eventJoined: [],
   eventCreated: [],
@@ -20,7 +22,8 @@ export default function(state = initialState, action) {
     case GET_EVENT:
       return {
         ...state,
-        event: payload,
+        event: payload[0],
+        isMyEvent: payload[1].isMyEvent,
         loading: false
       };
     case GET_MY_EVENTS:
@@ -36,6 +39,12 @@ export default function(state = initialState, action) {
         events: payload,
         loading: false
       };
+    case DELETE_EVENT:
+      return {
+        ...state,
+        loading: false
+      };
+
     case EVENTS_ERROR:
       return {
         ...state,
