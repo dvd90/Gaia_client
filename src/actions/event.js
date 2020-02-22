@@ -32,10 +32,10 @@ export const getAllMyEvents = user_id => async dispatch => {
     const res = await axios.get(
       `https://gaia-mern-app.herokuapp.com/api/events`
     );
+
     const all = res.data;
     const created = all.filter(event => event.creator._id === user_id);
 
-    console.log(created);
     let joined = [];
     all.forEach(event =>
       event.attendees.forEach(attend => {
@@ -45,11 +45,9 @@ export const getAllMyEvents = user_id => async dispatch => {
       })
     );
 
-    const myEvents = { all, created, joined };
-
     dispatch({
       type: GET_MY_EVENTS,
-      payload: myEvents
+      payload: [all, created, joined]
     });
   } catch (err) {
     dispatch({

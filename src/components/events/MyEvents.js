@@ -5,8 +5,15 @@ import { Link } from "react-router-dom";
 import Navbar from "../layout/Navbar";
 import EventCard from "../layout/EventCard";
 import { getAllMyEvents } from "../../actions/event";
+import moment from "moment";
 
-const MyEvents = ({ getAllMyEvents, events, user }) => {
+const MyEvents = ({
+  getAllMyEvents,
+  events,
+  user,
+  eventCreated,
+  eventJoined
+}) => {
   useEffect(() => {
     if (user) {
       getAllMyEvents(user._id);
@@ -35,27 +42,77 @@ const MyEvents = ({ getAllMyEvents, events, user }) => {
     setTab(e);
   };
 
-  const createdEvents = () => {
-    if (user) {
+  const makeListEvents = events => {
+    if (events.length > 0) {
+      return (
+        <Fragment>
+          {events.map(event => (
+            <EventCard component={event} key={event._id} />
+          ))}
+        </Fragment>
+      );
+    }
+    return (
+      <Fragment>
+        <div className="header-challenges">
+          <h3>Sorry you didn't create any Event...</h3>
+        </div>
+      </Fragment>
+    );
+  };
+
+  const makeListFuture = events => {
+    if (events.length > 0) {
       return (
         <Fragment>
           {events
-            .filter(e => e.creator._id === user._id)
+            .filter(e => moment(e.ends_at).fromNow()[0] === "i")
             .map(event => (
               <EventCard component={event} key={event._id} />
             ))}
         </Fragment>
       );
     }
+    return (
+      <Fragment>
+        <div className="header-challenges">
+          <h3>Sorry you didn't join any future Event...</h3>
+        </div>
+      </Fragment>
+    );
   };
 
-  const listTabCreated = createdEvents();
-  const listTabFuture = 2;
-  const listTabPast = 3;
+  const makeListPast = events => {
+    if (events.length > 0) {
+      return (
+        <Fragment>
+          {events
+            .filter(e => moment(e.ends_at).fromNow()[0] !== "i")
+            .map(event => (
+              <EventCard component={event} key={event._id} />
+            ))}
+        </Fragment>
+      );
+    }
+    return (
+      <Fragment>
+        <div className="header-challenges">
+          <h3>Sorry you didn't join any Past Event...</h3>
+        </div>
+      </Fragment>
+    );
+  };
+
+  const listTabCreated = makeListEvents(eventCreated);
+  const listTabFuture = makeListFuture(eventJoined);
+  const listTabPast = makeListPast(eventJoined);
 
   return (
     <Fragment>
       <Navbar /> <div className="nav-margin"></div>
+      <div className="header-challenges">
+        <h3>My Events</h3>
+      </div>
       <div className="events-tabs">
         <div className={`tab-link tab-link-challenge ${tabCreated}`}>
           <Link to="#!" onClick={e => onTabMenuClick(1)}>
