@@ -1,12 +1,12 @@
-import React, { Fragment, useEffect, useState } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import Navbar from '../layout/Navbar';
-import CardUser from './CardUser';
-import ChallengeCard from '../layout/ChallengeCard';
-import { getAllMyChallenges } from '../../actions/challenge';
-import { loadUser } from '../../actions/auth';
+import React, { Fragment, useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import Navbar from "../layout/Navbar";
+import CardUser from "./CardUser";
+import ChallengeCard from "../layout/ChallengeCard";
+import { getAllMyChallenges } from "../../actions/challenge";
+import { loadUser } from "../../actions/auth";
 
 const Dashboard = ({
   loadUser,
@@ -21,7 +21,6 @@ const Dashboard = ({
   useEffect(() => {
     if (isAuthenticated && user) {
       getAllMyChallenges(user._id);
-      console.log(user._id);
     }
   }, [getAllMyChallenges, isAuthenticated, user]);
 
@@ -30,32 +29,32 @@ const Dashboard = ({
   }, [loadUser]);
 
   const [tab, setTab] = useState(2);
-  const [tabCreated, setTabCreated] = useState('');
-  const [tabAll, setTabAll] = useState('selected');
-  const [tabCompleted, setTabCompleted] = useState('');
-  const [tabOpened, setTabOpened] = useState('');
+  const [tabCreated, setTabCreated] = useState("");
+  const [tabAll, setTabAll] = useState("selected");
+  const [tabCompleted, setTabCompleted] = useState("");
+  const [tabOpened, setTabOpened] = useState("");
 
   const onTabMenuClick = e => {
     if (e === 1) {
-      setTabCreated('selected');
-      setTabAll('');
-      setTabCompleted('');
-      setTabOpened('');
+      setTabCreated("selected");
+      setTabAll("");
+      setTabCompleted("");
+      setTabOpened("");
     } else if (e === 2) {
-      setTabCreated('');
-      setTabAll('selected');
-      setTabCompleted('');
-      setTabOpened('');
+      setTabCreated("");
+      setTabAll("selected");
+      setTabCompleted("");
+      setTabOpened("");
     } else if (e === 3) {
-      setTabCreated('');
-      setTabAll('');
-      setTabCompleted('selected');
-      setTabOpened('');
+      setTabCreated("");
+      setTabAll("");
+      setTabCompleted("selected");
+      setTabOpened("");
     } else {
-      setTabCreated('');
-      setTabAll('');
-      setTabCompleted('');
-      setTabOpened('selected');
+      setTabCreated("");
+      setTabAll("");
+      setTabCompleted("");
+      setTabOpened("selected");
     }
     setTab(e);
   };
@@ -76,7 +75,7 @@ const Dashboard = ({
 
   return (
     <Fragment>
-      <Navbar /> <div className='nav-margin'></div>
+      <Navbar /> <div className="nav-margin"></div>
       <CardUser
         component={user}
         opened={challengeOpened.length > 0 ? challengeOpened.length : 0}
@@ -84,27 +83,27 @@ const Dashboard = ({
           challengeCompleted.length > 0 ? challengeCompleted.length : 0
         }
       />
-      <div className='header-challenges'>
+      <div className="header-challenges">
         <h3>Challenges</h3>
       </div>
-      <div className='events-tabs'>
+      <div className="events-tabs">
         <div className={`tab-link tab-link-dasboard ${tabAll}`}>
-          <Link to='#!' onClick={e => onTabMenuClick(2)}>
+          <Link to="#!" onClick={e => onTabMenuClick(2)}>
             All
           </Link>
         </div>
         <div className={`tab-link tab-link-dasboard ${tabCreated}`}>
-          <Link to='#!' onClick={e => onTabMenuClick(1)}>
+          <Link to="#!" onClick={e => onTabMenuClick(1)}>
             Created
           </Link>
         </div>
         <div className={`tab-link tab-link-dasboard ${tabCompleted}`}>
-          <Link to='#!' onClick={e => onTabMenuClick(3)}>
+          <Link to="#!" onClick={e => onTabMenuClick(3)}>
             Completed
           </Link>
         </div>
         <div className={`tab-link tab-link-dasboard ${tabOpened}`}>
-          <Link to='#!' onClick={e => onTabMenuClick(4)}>
+          <Link to="#!" onClick={e => onTabMenuClick(4)}>
             Opened
           </Link>
         </div>
