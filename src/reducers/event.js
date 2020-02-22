@@ -8,6 +8,7 @@ import {
 
 const initialState = {
   event: null,
+  isMyEvent: null,
   events: [],
   eventJoined: [],
   eventCreated: [],
@@ -21,7 +22,8 @@ export default function(state = initialState, action) {
     case GET_EVENT:
       return {
         ...state,
-        event: payload,
+        event: payload[0],
+        isMyEvent: payload[1].isMyEvent,
         loading: false
       };
     case GET_MY_EVENTS:

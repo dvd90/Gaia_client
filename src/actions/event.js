@@ -58,15 +58,23 @@ export const getAllMyEvents = user_id => async dispatch => {
 };
 
 // Load A Event
-export const getEvent = id => async dispatch => {
+export const getEvent = (user_id, id) => async dispatch => {
+  let eventInfo = {};
+
   try {
     const res = await axios.get(
       `https://gaia-mern-app.herokuapp.com/api/events/${id}`
     );
 
+    if (res.data.creator === user_id) {
+      eventInfo.isMyEvent = true;
+    } else {
+      eventInfo.isMyEvent = false;
+    }
+
     dispatch({
       type: GET_EVENT,
-      payload: res.data
+      payload: [res.data, eventInfo]
     });
   } catch (err) {
     dispatch({

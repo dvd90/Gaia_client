@@ -7,19 +7,15 @@ import Navbar from '../layout/Navbar';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-const ShowEvent = ({
-  getEvent,
-  event,
-  deleteChallenge,
-  isAuthenticated,
-  user
-}) => {
+const ShowEvent = ({ getEvent, event, isMyEvent, deleteEvent, user }) => {
   const history = useHistory();
   let { id } = useParams();
 
   useEffect(() => {
-    getEvent(id);
-  }, [getEvent, id]);
+    if (user) {
+      getEvent(user._id, id);
+    }
+  }, [getEvent, id, user]);
 
   const onDelete = () => {
     try {
@@ -64,7 +60,7 @@ const ShowEvent = ({
           ''
         )}
       </div>
-      {isAuthenticated && user ? (
+      {isMyEvent ? (
         <div className='deleteIcon'>
           <DeleteIcon style={{ fontSize: 60 }} onClick={onDelete} />
         </div>
@@ -77,13 +73,13 @@ ShowEvent.propTypes = {
   getEvent: PropTypes.func.isRequired,
   event: PropTypes.object,
   deleteEvent: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool
+  isMyEvent: PropTypes.bool
 };
 
 const mapStateToProps = state => ({
   event: state.event.event,
   user: state.auth.user,
-  isAuthenticated: state.auth.isAuthenticated
+  isMyEvent: state.event.isMyEvent
 });
 
 export default connect(mapStateToProps, { getEvent, deleteEvent })(ShowEvent);
