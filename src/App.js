@@ -24,6 +24,7 @@ import EditChallenge from './components/challenges/EditChallenge';
 import ShowEvent from './components/events/ShowEvent';
 import Events from './components/events/Events';
 import CreateEvent from './components/events/CreateEvent';
+import EditEvent from './components/events/EditEvent';
 
 // REDUX
 import { Provider } from 'react-redux';
@@ -69,6 +70,11 @@ const App = () => {
                 exact
                 path='/create_event'
                 component={CreateEvent}
+              />
+              <PrivateRoute
+                exact
+                path='/edit_event/:id'
+                component={EditEvent}
               />
               <PrivateRoute
                 exact
