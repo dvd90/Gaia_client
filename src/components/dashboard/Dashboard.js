@@ -6,8 +6,10 @@ import Navbar from "../layout/Navbar";
 import CardUser from "./CardUser";
 import ChallengeCard from "../layout/ChallengeCard";
 import { getAllMyChallenges } from "../../actions/challenge";
+import { loadUser } from "../../actions/auth";
 
 const Dashboard = ({
+  loadUser,
   getAllMyChallenges,
   isAuthenticated,
   user,
@@ -21,6 +23,10 @@ const Dashboard = ({
       getAllMyChallenges(user._id);
     }
   }, [getAllMyChallenges, isAuthenticated, user]);
+
+  useEffect(() => {
+    loadUser();
+  }, [loadUser]);
 
   const [tab, setTab] = useState(2);
   const [tabCreated, setTabCreated] = useState("");
@@ -112,7 +118,8 @@ const Dashboard = ({
 
 Dashboard.propTypes = {
   isAuthenticated: PropTypes.bool,
-  getAllMyChallenges: PropTypes.func.isRequired
+  getAllMyChallenges: PropTypes.func.isRequired,
+  loadUser: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -124,4 +131,6 @@ const mapStateToProps = state => ({
   challengeOpened: state.challenge.challengeOpened
 });
 
-export default connect(mapStateToProps, { getAllMyChallenges })(Dashboard);
+export default connect(mapStateToProps, { getAllMyChallenges, loadUser })(
+  Dashboard
+);

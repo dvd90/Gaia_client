@@ -1,5 +1,5 @@
-import React from "react";
-import ReactMapboxGl from "react-mapbox-gl";
+import React, { useState } from "react";
+import ReactMapboxGl, { Layer, Feature, Marker } from "react-mapbox-gl";
 
 const Mapbox = () => {
   const mapStyle = { link: "mapbox://styles/dvd90/ck6dgjim00pgp1isan89qwfig" };
@@ -15,7 +15,8 @@ const Mapbox = () => {
         width: "100vw"
       }}
       className="gaia-map"
-    />
+      center={[34.80287, 32.090252]}
+    ></Map>
   );
 };
 

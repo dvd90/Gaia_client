@@ -88,7 +88,7 @@ export const getChallenge = (user_id, id) => async dispatch => {
       challengeInfo.isMyChallenge = false;
     }
 
-    const join = res.data.joined_by.filter(j => j.user);
+    const join = res.data.joined_by.filter(j => j.user === user_id);
 
     if (join.length !== 0) {
       if (join[0].status === "In Progress") {
