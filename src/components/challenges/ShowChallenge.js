@@ -1,13 +1,12 @@
 import React, { useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getChallenge } from '../../actions/challenge';
+import { getChallenge, deleteChallenge } from '../../actions/challenge';
 import { useParams, Link, useHistory } from 'react-router-dom';
 import Navbar from '../layout/Navbar';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { deleteChallenge } from '../../actions/challenge';
 
 const ShowChallenge = ({
   getChallenge,
@@ -25,7 +24,6 @@ const ShowChallenge = ({
     getChallenge(id);
   }, [getChallenge, id]);
 
-  //  Delete function
   const onDelete = () => {
     try {
       deleteChallenge(id);
@@ -196,9 +194,9 @@ const mapStateToProps = state => ({
   challenge: state.challenge.challenge,
   challengeOpened: state.challenge.challengeOpened,
   challengeCompleted: state.challenge.challengeCompleted,
+  challengeCreated: state.challenge.challengeCreated,
   user: state.auth.user,
-  isAuthenticated: state.auth.isAuthenticated,
-  challengeCreated: state.challenge.challengeCreated
+  isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(mapStateToProps, { getChallenge, deleteChallenge })(

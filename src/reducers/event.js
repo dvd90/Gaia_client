@@ -2,8 +2,9 @@ import {
   EVENTS_ERROR,
   GET_ALL_EVENTS,
   GET_MY_EVENTS,
-  GET_EVENT
-} from "../actions/types";
+  GET_EVENT,
+  DELETE_EVENT
+} from '../actions/types';
 
 const initialState = {
   event: null,
@@ -36,6 +37,12 @@ export default function(state = initialState, action) {
         events: payload,
         loading: false
       };
+    case DELETE_EVENT:
+      return {
+        ...state,
+        loading: false
+      };
+
     case EVENTS_ERROR:
       return {
         ...state,
