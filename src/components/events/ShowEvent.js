@@ -9,8 +9,16 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import swal from 'sweetalert';
 import axios from 'axios';
 import moment from 'moment';
+import EditIcon from '@material-ui/icons/Edit';
 
-const ShowEvent = ({ getEvent, event, isMyEvent, deleteEvent, user }) => {
+const ShowEvent = ({
+  getEvent,
+  event,
+  isMyEvent,
+  deleteEvent,
+  user,
+  isJoinedEvent
+}) => {
   const history = useHistory();
   let { id } = useParams();
 
@@ -92,19 +100,24 @@ const ShowEvent = ({ getEvent, event, isMyEvent, deleteEvent, user }) => {
             </div>
             <div className='show-points'>
               <p className='show-description'>
+                <i className='far fa-clock'> </i>{' '}
                 {moment(event.starts_at).fromNow()}
               </p>
-              <p className='show-description'>{event.location}</p>
+              <p className='show-description'>
+                <i className='fas fa-map-pin'></i> {event.location}
+              </p>
               <p className='show-description'>{event.description}</p>
               <div className='show-btns'>
-                <Link to='/#!'>
-                  <Button
-                    className='radiant-green-btn show-btn'
-                    onClick={e => onClickJoin(e)}
-                  >
-                    Join
-                  </Button>
-                </Link>
+                {!isJoinedEvent && (
+                  <Link to='/#!'>
+                    <Button
+                      className='radiant-green-btn show-btn'
+                      onClick={e => onClickJoin(e)}
+                    >
+                      Join
+                    </Button>
+                  </Link>
+                )}
                 <Link to='/events'>
                   <Button className='radiant-purple-btn show-btn'>Back</Button>
                 </Link>
@@ -133,13 +146,15 @@ ShowEvent.propTypes = {
   getEvent: PropTypes.func.isRequired,
   event: PropTypes.object,
   deleteEvent: PropTypes.func.isRequired,
-  isMyEvent: PropTypes.bool
+  isMyEvent: PropTypes.bool,
+  isJoinedEvent: PropTypes.bool
 };
 
 const mapStateToProps = state => ({
   event: state.event.event,
   user: state.auth.user,
-  isMyEvent: state.event.isMyEvent
+  isMyEvent: state.event.isMyEvent,
+  isJoinedEvent: state.event.isJoinedEvent
 });
 
 export default connect(mapStateToProps, { getEvent, deleteEvent })(ShowEvent);

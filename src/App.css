@@ -366,6 +366,11 @@ body {
   border-radius: 31px !important;
 }
 
+.card-title {
+  font-family: 'Montserrat';
+  text-transform: uppercase;
+}
+
 /* Map CSS */
 
 .gaia-map {

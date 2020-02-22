@@ -4,11 +4,12 @@ import {
   GET_MY_EVENTS,
   GET_EVENT,
   DELETE_EVENT
-} from "../actions/types";
+} from '../actions/types';
 
 const initialState = {
   event: null,
   isMyEvent: null,
+  isJoinedEvent: null,
   events: [],
   eventJoined: [],
   eventCreated: [],
@@ -24,6 +25,7 @@ export default function(state = initialState, action) {
         ...state,
         event: payload[0],
         isMyEvent: payload[1].isMyEvent,
+        isJoinedEvent: payload[1].isJoinedEvent,
         loading: false
       };
     case GET_MY_EVENTS:
