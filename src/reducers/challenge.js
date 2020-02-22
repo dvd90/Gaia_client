@@ -4,10 +4,13 @@ import {
   GET_CHALLENGE,
   GET_MY_CHALLENGES,
   DELETE_CHALLENGE
-} from '../actions/types';
+} from "../actions/types";
 
 const initialState = {
   challenge: null,
+  isMyChallenge: null,
+  isOpenedChallenge: null,
+  isCompletedChallenge: null,
   challenges: [],
   challengeOpened: [],
   challengeCreated: [],
@@ -37,7 +40,10 @@ export default function(state = initialState, action) {
     case GET_CHALLENGE:
       return {
         ...state,
-        challenge: payload,
+        challenge: payload[0],
+        isMyChallenge: payload[1].isMyChallenge,
+        isOpenedChallenge: payload[1].isOpenedChallenge,
+        isCompletedChallenge: payload[1].isCompletedChallenge,
         loading: false
       };
     case DELETE_CHALLENGE:
