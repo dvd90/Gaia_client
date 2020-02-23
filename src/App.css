@@ -160,7 +160,7 @@ body {
 }
 
 .quote {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 16px;
   font-style: italic;
   text-transform: uppercase;
@@ -170,7 +170,7 @@ body {
 .quote-author {
   text-transform: uppercase;
   font-size: 16px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 700;
   margin-top: 0;
 }
@@ -235,7 +235,7 @@ body {
 }
 
 .digit-quiz-result {
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   font-size: 60px;
 }
 
@@ -323,14 +323,14 @@ body {
   padding-right: -10px;
 }
 .challenge_title {
-  font-family: 'Quicksand';
+  font-family: "Quicksand";
   font-weight: medium;
   color: #384f7d;
   font-size: 16px;
   margin-right: 3px;
 }
 .Challenge_impact {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -367,7 +367,7 @@ body {
 }
 
 .card-title {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   text-transform: uppercase;
 }
 
@@ -536,4 +536,90 @@ body {
 
 .swal-modal {
   font-family: Montserrat;
+}
+
+/* Info Page */
+
+#info-page {
+  background-image: url("./images/infobackground.jpg");
+  background-size: cover;
+  height: 1821px;
+}
+.title-info-page {
+  padding-top: 130px;
+  width: 80vw;
+  margin: 0 auto;
+}
+
+.title-info-page h1 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: lighter;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  color: #f4f4f6;
+}
+
+.title-info-page-com {
+  width: 170px;
+  margin-top: 28vh;
+  margin-left: 25px;
+}
+
+.title-info-page-com h4 {
+  font-family: "Montserrat";
+  font-style: lighter;
+  font-weight: normal;
+  font-size: 17px;
+  line-height: 22px;
+  color: #f4f4f6;
+  margin-bottom: 10px;
+}
+.title-info-page-side h5 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  color: #3f3d56;
+  margin: 0;
+}
+.title-info-page-side {
+  position: absolute;
+  right: 15px;
+  width: 170px;
+}
+
+.title-info-page-steps h6 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: lighter;
+  font-size: 18px;
+  line-height: 22px;
+  margin-top: 13px;
+  color: #9fa0a8;
+}
+
+.step h2 {
+  font-family: Quicksand;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 23px;
+  line-height: 29px;
+  text-align: center;
+  color: #1f2041;
+}
+
+.step-one {
+  margin-top: 28vh;
+}
+
+.step-two {
+  margin-top: 36vh;
+}
+
+.step-three {
+  margin-top: 32vh;
 }
