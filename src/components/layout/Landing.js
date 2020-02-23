@@ -18,7 +18,7 @@ const Landing = () => {
         </p>
         <p className="quote-author">Freeman Dyson</p>
         <div className="landing-btns">
-          <Link to="/quiz">
+          <Link to="/info">
             <Button className="radiant-green-btn">Be part of the change</Button>
           </Link>
           <Link to="/login">
