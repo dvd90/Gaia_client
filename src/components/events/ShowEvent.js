@@ -107,21 +107,30 @@ const ShowEvent = ({
                 <i className='fas fa-map-pin'></i> {event.location}
               </p>
               <p className='show-description'>{event.description}</p>
-              <div className='show-btns'>
-                {!isJoinedEvent && (
-                  <Link to='/#!'>
-                    <Button
-                      className='radiant-green-btn show-btn'
-                      onClick={e => onClickJoin(e)}
-                    >
-                      Join
-                    </Button>
-                  </Link>
-                )}
+            </div>
+            <div className='show-btns'>
+              {!isJoinedEvent && (
+                <Link to='/#!'>
+                  <Button
+                    className='radiant-green-btn show-btn'
+                    onClick={e => onClickJoin(e)}
+                  >
+                    Join
+                  </Button>
+                </Link>
+              )}
+              {!isJoinedEvent && (
                 <Link to='/events'>
                   <Button className='radiant-purple-btn show-btn'>Back</Button>
                 </Link>
-              </div>
+              )}
+              {isJoinedEvent && (
+                <Link to='/events'>
+                  <Button className='radiant-purple-btn center-button'>
+                    Back
+                  </Button>
+                </Link>
+              )}
             </div>
           </Fragment>
         )}
