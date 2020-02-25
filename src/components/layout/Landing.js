@@ -10,13 +10,6 @@ const Landing = () => {
         <img className="landing-logo-img" src={gaiaLogo} alt="gaia-logo" />
       </div>
       <div className="landing-quotes">
-        <p className="quote">
-          “The question that will decide our destiny is not whether we shall
-          expand into space. It is: shall we be one species or a million? A
-          million species will not exhaust the ecological niches that are
-          awaiting the arrival of intelligence.”
-        </p>
-        <p className="quote-author">Freeman Dyson</p>
         <div className="landing-btns">
           <Link to="/quiz">
             <Button className="radiant-green-btn">Be part of the change</Button>
@@ -25,6 +18,13 @@ const Landing = () => {
             <Button className="radiant-purple-btn">Login</Button>
           </Link>
         </div>
+        <p className="quote">
+          “The question that will decide our destiny is not whether we shall
+          expand into space. It is: shall we be one species or a million? A
+          million species will not exhaust the ecological niches that are
+          awaiting the arrival of intelligence.”
+        </p>
+        <p className="quote-author">Freeman Dyson</p>
       </div>
     </section>
   );
