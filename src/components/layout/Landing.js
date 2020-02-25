@@ -11,7 +11,7 @@ const Landing = () => {
       </div>
       <div className="landing-quotes">
         <div className="landing-btns">
-          <Link to="/quiz">
+          <Link to="/info">
             <Button className="radiant-green-btn">Be part of the change</Button>
           </Link>
           <Link to="/login">
