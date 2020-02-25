@@ -22,12 +22,14 @@ const FormQuiz = ({ quizResult, score }) => {
     ["Vegan", 0],
     ["Vegetarian", -0.2]
   ];
+
   const flightOptions = [
     ["Never", -0.2],
     ["Between 1 & 3 times", 0.1],
     ["Between 4 & 8 times", 0.2],
     ["More than 8 times", 0.3]
   ];
+
   const transportOptions = [
     ["Foot", 0],
     ["Bicycle", 0],
