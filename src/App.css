@@ -151,13 +151,14 @@ body {
   margin-top: 5vh;
 }
 .landing-quotes {
-  margin-top: 10vh;
+  margin-top: 12vh;
   margin-left: 10vw;
   margin-right: 10vw;
   text-align: center;
 }
 
 .quote {
+  margin-top: 10vh;
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
   font-style: italic;
@@ -476,7 +477,7 @@ body {
 
 .show-banner img {
   background-size: cover;
-  height: 325px;
+  height: 40vh;
   width: 100%;
 }
 
@@ -505,11 +506,11 @@ body {
   margin: 0 30px;
   margin-top: 5vh;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .show-btn {
-  width: 135px;
+  width: 140px;
 }
 .center-button {
   margin: 0 auto;
