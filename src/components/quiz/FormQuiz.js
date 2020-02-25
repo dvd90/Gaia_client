@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import Button from "@material-ui/core/Button";
@@ -49,7 +49,7 @@ const FormQuiz = ({ quizResult, score }) => {
   }
 
   return (
-    <Fragment>
+    <>
       <section className="quiz-form-page">
         <div className="header-title header-title-quiz">
           Be part of the change...
@@ -139,7 +139,7 @@ const FormQuiz = ({ quizResult, score }) => {
           </div>
         </form>
       </section>
-    </Fragment>
+    </>
   );
 };
 

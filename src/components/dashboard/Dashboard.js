@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -61,11 +61,11 @@ const Dashboard = ({
 
   const createTab = elements => {
     return (
-      <Fragment>
+      <>
         {elements.map(element => (
           <ChallengeCard component={element} key={element._id} />
         ))}
-      </Fragment>
+      </>
     );
   };
   const listTabCreated = createTab(challengeCreated);
@@ -74,7 +74,7 @@ const Dashboard = ({
   const listTabAll = createTab(challenges);
 
   return (
-    <Fragment>
+    <>
       <Navbar /> <div className="nav-margin"></div>
       <CardUser
         component={user}
@@ -112,7 +112,7 @@ const Dashboard = ({
       {tab === 2 && listTabAll}
       {tab === 3 && listTabCompleted}
       {tab === 4 && listTabOpened}
-    </Fragment>
+    </>
   );
 };
 

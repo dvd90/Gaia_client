@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import gaiaLogo from "../../images/GAIA-logo.png";
 import planetLogo from "../../images/planet_cons.png";
 import Button from "@material-ui/core/Button";
@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const QuizResult = () => {
   return (
-    <Fragment>
+    <>
       <section className="quiz-result-page">
         <div className="register-logo-high">
           <img
@@ -44,7 +44,7 @@ const QuizResult = () => {
           </div>
         </div>
       </section>
-    </Fragment>
+    </>
   );
 };
 

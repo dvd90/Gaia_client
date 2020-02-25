@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment, useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
@@ -45,61 +45,61 @@ const MyEvents = ({
   const makeListEvents = events => {
     if (events.length > 0) {
       return (
-        <Fragment>
+        <>
           {events.map(event => (
             <EventCard component={event} key={event._id} />
           ))}
-        </Fragment>
+        </>
       );
     }
     return (
-      <Fragment>
+      <>
         <div className="header-challenges">
           <h3>Sorry you didn't create any Event...</h3>
         </div>
-      </Fragment>
+      </>
     );
   };
 
   const makeListFuture = events => {
     if (events.length > 0) {
       return (
-        <Fragment>
+        <>
           {events
             .filter(e => moment(e.ends_at).fromNow()[0] === "i")
             .map(event => (
               <EventCard component={event} key={event._id} />
             ))}
-        </Fragment>
+        </>
       );
     }
     return (
-      <Fragment>
+      <>
         <div className="header-challenges">
           <h3>Sorry you didn't join any future Event...</h3>
         </div>
-      </Fragment>
+      </>
     );
   };
 
   const makeListPast = events => {
     if (events.length > 0) {
       return (
-        <Fragment>
+        <>
           {events
             .filter(e => moment(e.ends_at).fromNow()[0] !== "i")
             .map(event => (
               <EventCard component={event} key={event._id} />
             ))}
-        </Fragment>
+        </>
       );
     }
     return (
-      <Fragment>
+      <>
         <div className="header-challenges">
           <h3>Sorry you didn't join any Past Event...</h3>
         </div>
-      </Fragment>
+      </>
     );
   };
 
@@ -108,7 +108,7 @@ const MyEvents = ({
   const listTabPast = makeListPast(eventJoined);
 
   return (
-    <Fragment>
+    <>
       <Navbar /> <div className="nav-margin"></div>
       <div className="header-challenges">
         <h3>My Events</h3>
@@ -133,7 +133,7 @@ const MyEvents = ({
       {tab === 1 && listTabCreated}
       {tab === 2 && listTabFuture}
       {tab === 3 && listTabPast}
-    </Fragment>
+    </>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -60,7 +60,7 @@ const Navbar = ({ logout, auth }) => {
           </li>
 
           {auth.isAuthenticated ? (
-            <Fragment>
+            <>
               <li className="item-menu">
                 <Link to="/my_events">My Events</Link>
               </li>
@@ -69,7 +69,7 @@ const Navbar = ({ logout, auth }) => {
                   Log Out
                 </Link>
               </li>
-            </Fragment>
+            </>
           ) : (
             <li className="item-menu lgo-item">
               <Link to="/login">Login</Link>
@@ -85,9 +85,9 @@ const Navbar = ({ logout, auth }) => {
   };
 
   return (
-    <Fragment>
+    <>
       <AppBar position="fixed">{nav ? hamburger : menu}</AppBar>
-    </Fragment>
+    </>
   );
 };
 

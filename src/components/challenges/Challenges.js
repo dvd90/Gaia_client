@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { getAllChallenges } from "../../actions/challenge";
@@ -36,13 +36,13 @@ const Challenges = ({ getAllChallenges, challenges }) => {
 
   const filterBy = category => {
     return (
-      <Fragment>
+      <>
         {challenges
           .filter(c => c.category === category)
           .map(challenge => (
             <ChallengeCard component={challenge} key={challenge._id} />
           ))}
-      </Fragment>
+      </>
     );
   };
 
@@ -51,7 +51,7 @@ const Challenges = ({ getAllChallenges, challenges }) => {
   const listTabTransport = filterBy("Transport");
 
   return (
-    <Fragment>
+    <>
       <Navbar /> <div className="nav-margin"></div>
       <div className="events-tabs">
         <div className={`tab-link tab-link-challenge ${tabWaste}`}>
@@ -80,7 +80,7 @@ const Challenges = ({ getAllChallenges, challenges }) => {
           </Button>
         </div>
       </Link>
-    </Fragment>
+    </>
   );
 };
 

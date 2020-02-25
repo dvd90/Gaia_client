@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { getAllEvents } from "../../actions/event";
@@ -29,22 +29,22 @@ const Events = ({ getAllEvents, events }) => {
   };
 
   const listTab = (
-    <Fragment>
+    <>
       {" "}
       {events.map(event => (
         <EventCard component={event} key={event._id} />
       ))}
-    </Fragment>
+    </>
   );
 
   const mapTab = (
-    <Fragment>
+    <>
       <Mapbox />
-    </Fragment>
+    </>
   );
 
   return (
-    <Fragment>
+    <>
       <Navbar /> <div className="nav-margin"></div>
       <div className="events-tabs">
         <div className={`tab-link ${tabOne}`}>
@@ -66,7 +66,7 @@ const Events = ({ getAllEvents, events }) => {
           </Button>
         </div>
       </Link>
-    </Fragment>
+    </>
   );
 };
 

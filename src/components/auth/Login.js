@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import gaiaLogo from "../../images/GAIA-logo.png";
 import TextField from "@material-ui/core/TextField";
@@ -31,7 +31,7 @@ const Login = ({ login, isAuthenticated, loadUser }) => {
   }
 
   return (
-    <Fragment>
+    <>
       <section className="login">
         <div className="landing-logo">
           <img className="landing-logo-img" src={gaiaLogo} alt="gaia-logo" />
@@ -69,7 +69,7 @@ const Login = ({ login, isAuthenticated, loadUser }) => {
           </div>
         </form>
       </section>
-    </Fragment>
+    </>
   );
 };
 

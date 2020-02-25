@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
@@ -74,7 +74,7 @@ const CreateChallenge = ({ setAlert }) => {
   };
 
   return (
-    <Fragment>
+    <>
       <Navbar /> <div className="nav-margin"></div>
       <section className="register create-challenge">
         <div className="header-title">Create a Challenge</div>
@@ -134,7 +134,7 @@ const CreateChallenge = ({ setAlert }) => {
           </div>
         </form>
       </section>
-    </Fragment>
+    </>
   );
 };
 
