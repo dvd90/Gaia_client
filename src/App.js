@@ -41,7 +41,7 @@ if (localStorage.token) {
 }
 
 const App = () => {
-  const isMobile = window.innerWidth <= 600;
+  const isMobile = window.innerWidth <= 1024;
 
   useEffect(() => {
     store.dispatch(loadUser());
@@ -102,8 +102,10 @@ const App = () => {
           <img className="notMobile-logo-img" src={gaiaLogo} alt="gaia-logo" />
         </div>
         <div className="text-mobile">
-          <h1>Ooopppss our development version is mobile based :)</h1>
-          <h5>Please go on the website with your mobile...</h5>
+          <h1>
+            Ooopppss our development version is mobile and tablet based :)
+          </h1>
+          <h5>Please go on the website with your mobile or your tablet...</h5>
           <p>See you soon</p>
         </div>
       </section>
