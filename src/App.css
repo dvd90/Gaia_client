@@ -127,7 +127,7 @@ body {
 }
 
 .createdIcons {
-  margin-top: 60px;
+  margin-top: 40px;
   text-align: center;
 }
 .createdIcons > svg {
@@ -141,25 +141,24 @@ body {
   text-align: center;
 }
 
-.landing-logo {
-  margin-top: 10vh;
-}
-
 .landing-logo-img {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 80vw;
 }
-
+.landing-logo {
+  margin-top: 5vh;
+}
 .landing-quotes {
-  margin-top: 16vh;
+  margin-top: 12vh;
   margin-left: 10vw;
   margin-right: 10vw;
   text-align: center;
 }
 
 .quote {
+  margin-top: 10vh;
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
   font-style: italic;
@@ -262,10 +261,14 @@ body {
 }
 
 /* Alerts */
+.float-top {
+  position: fixed;
+  top: 80px;
+  transform: translateX(25%);
+}
 
 .alert {
   padding: 0.8rem;
-  margin: 5rem 10px;
   border-radius: 8px;
   opacity: 0.9;
   font-family: var(--main-font);
@@ -474,7 +477,7 @@ body {
 
 .show-banner img {
   background-size: cover;
-  height: 325px;
+  height: 40vh;
   width: 100%;
 }
 
@@ -503,13 +506,15 @@ body {
   margin: 0 30px;
   margin-top: 5vh;
   display: flex;
-  place-content: space-between;
+  justify-content: space-evenly;
 }
 
 .show-btn {
-  width: 135px;
+  width: 140px;
 }
-
+.center-button {
+  margin: 0 auto;
+}
 .show-description p {
   font-size: 14px;
   line-height: 24px;
