@@ -13,7 +13,7 @@
     "ciqu-react-calendar": "^1.0.2",
     "geocoder": "^0.2.3",
     "mapbox-gl": "^1.7.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-mapbox-gl": "^4.8.2",
