@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../utils/api";
 import { QUIZ_SUCCESS, QUIZ_FAIL } from "./types";
 
 // Call FootPrintAPI with Redux
@@ -15,8 +15,8 @@ export const quizResult = ({
   };
 
   try {
-    const res = await axios.get(
-      `https://gaia-mern-app.herokuapp.com/api/footprint/${country}`,
+    const res = await api.get(
+      `/api/footprint/${country}`,
       config
     );
     res.data.earths += eater + flights + transportation;

@@ -6,7 +6,7 @@ import Button from "@material-ui/core/Button";
 import InputLabel from "@material-ui/core/InputLabel";
 import { setAlert } from "../../actions/alert";
 import Navbar from "../layout/Navbar";
-import axios from "axios";
+import api from "../../utils/api";
 import Calendar from "ciqu-react-calendar";
 
 const CreateEvent = ({ setAlert }) => {
@@ -53,8 +53,8 @@ const CreateEvent = ({ setAlert }) => {
         };
 
         try {
-          const res = await axios.post(
-            "https://gaia-mern-app.herokuapp.com/api/events",
+          const res = await api.post(
+            "/api/events",
             formData,
             config
           );

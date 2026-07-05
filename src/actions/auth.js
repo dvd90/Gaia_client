@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../utils/api";
 import { setAlert } from "./alert";
 import {
   REGISTER_SUCCESS,
@@ -18,7 +18,7 @@ export const loadUser = () => async dispatch => {
   }
 
   try {
-    const res = await axios.get("https://gaia-mern-app.herokuapp.com/api/auth");
+    const res = await api.get("/api/auth");
 
     dispatch({
       type: USER_LOADED,
@@ -48,8 +48,8 @@ export const register = ({
   const body = { name, email, password, address, planet_consuption };
 
   try {
-    const res = await axios.post(
-      "https://gaia-mern-app.herokuapp.com/api/users",
+    const res = await api.post(
+      "/api/users",
       body,
       config
     );
@@ -84,8 +84,8 @@ export const login = (email, password) => async dispatch => {
   const body = { email, password };
 
   try {
-    const res = await axios.post(
-      "https://gaia-mern-app.herokuapp.com/api/auth",
+    const res = await api.post(
+      "/api/auth",
       body,
       config
     );

@@ -6,7 +6,7 @@ import Button from "@material-ui/core/Button";
 import { setAlert } from "../../actions/alert";
 import Navbar from "../layout/Navbar";
 import PropTypes from "prop-types";
-import axios from "axios";
+import api from "../../utils/api";
 
 const EditEvent = ({ setAlert, event }) => {
   const history = useHistory();
@@ -37,8 +37,8 @@ const EditEvent = ({ setAlert, event }) => {
         };
         const body = { title, location, description };
         try {
-          const res = await axios.put(
-            `https://gaia-mern-app.herokuapp.com/api/events/${id}`,
+          const res = await api.put(
+            `/api/events/${id}`,
             body,
             config
           );

@@ -10,7 +10,7 @@ import { setAlert } from "../../actions/alert";
 import Navbar from "../layout/Navbar";
 import PropTypes from "prop-types";
 import Slider from "@material-ui/core/Slider";
-import axios from "axios";
+import api from "../../utils/api";
 
 const EditChallenge = ({ setAlert, challenge }) => {
   const history = useHistory();
@@ -52,8 +52,8 @@ const EditChallenge = ({ setAlert, challenge }) => {
         };
         const body = { title, category, description, gaia_points };
         try {
-          const res = await axios.put(
-            `https://gaia-mern-app.herokuapp.com/api/challenges/${id}`,
+          const res = await api.put(
+            `/api/challenges/${id}`,
             body,
             config
           );

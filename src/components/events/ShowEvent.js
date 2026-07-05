@@ -7,7 +7,7 @@ import Navbar from "../layout/Navbar";
 import Button from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
 import swal from "sweetalert";
-import axios from "axios";
+import api from "../../utils/api";
 import moment from "moment";
 import EditIcon from "@material-ui/icons/Edit";
 
@@ -42,8 +42,8 @@ const ShowEvent = ({
           }
         };
         try {
-          const res = await axios.put(
-            `https://gaia-mern-app.herokuapp.com/api/events/${id}/join`,
+          const res = await api.put(
+            `/api/events/${id}/join`,
             config
           );
           console.log(res.data);

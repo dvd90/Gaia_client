@@ -1,4 +1,4 @@
-import axios from 'axios';
+import api from "../utils/api";
 // import { setAlert } from "./alert";
 import {
   EVENTS_ERROR,
@@ -11,8 +11,8 @@ import {
 // Load All Events
 export const getAllEvents = () => async dispatch => {
   try {
-    const res = await axios.get(
-      'https://gaia-mern-app.herokuapp.com/api/events'
+    const res = await api.get(
+      '/api/events'
     );
 
     dispatch({
@@ -29,8 +29,8 @@ export const getAllEvents = () => async dispatch => {
 // Load All My Events
 export const getAllMyEvents = user_id => async dispatch => {
   try {
-    const res = await axios.get(
-      `https://gaia-mern-app.herokuapp.com/api/events`
+    const res = await api.get(
+      `/api/events`
     );
 
     const all = res.data;
@@ -61,8 +61,8 @@ export const getEvent = (user_id, id) => async dispatch => {
   let eventInfo = {};
 
   try {
-    const res = await axios.get(
-      `https://gaia-mern-app.herokuapp.com/api/events/${id}`
+    const res = await api.get(
+      `/api/events/${id}`
     );
 
     const joined = res.data.attendees.filter(event => event.user === user_id);
@@ -96,8 +96,8 @@ export const deleteEvent = id => async dispatch => {
     }
   };
   try {
-    await axios.delete(
-      `https://gaia-mern-app.herokuapp.com/api/events/${id}`,
+    await api.delete(
+      `/api/events/${id}`,
       config
     );
     dispatch({

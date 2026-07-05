@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../utils/api";
 // import { setAlert } from "./alert";
 import {
   CHALLENGES_ERROR,
@@ -11,8 +11,8 @@ import {
 // Load All Challenges
 export const getAllChallenges = () => async dispatch => {
   try {
-    const res = await axios.get(
-      "https://gaia-mern-app.herokuapp.com/api/challenges"
+    const res = await api.get(
+      "/api/challenges"
     );
 
     dispatch({
@@ -29,8 +29,8 @@ export const getAllChallenges = () => async dispatch => {
 // Load All My Challenges
 export const getAllMyChallenges = user_id => async dispatch => {
   try {
-    const res = await axios.get(
-      `https://gaia-mern-app.herokuapp.com/api/challenges`
+    const res = await api.get(
+      `/api/challenges`
     );
 
     const created = res.data.filter(
@@ -78,8 +78,8 @@ export const getAllMyChallenges = user_id => async dispatch => {
 export const getChallenge = (user_id, id) => async dispatch => {
   let challengeInfo = {};
   try {
-    const res = await axios.get(
-      `https://gaia-mern-app.herokuapp.com/api/challenges/${id}`
+    const res = await api.get(
+      `/api/challenges/${id}`
     );
 
     if (res.data.creator === user_id) {
@@ -122,8 +122,8 @@ export const deleteChallenge = id => async dispatch => {
     }
   };
   try {
-    await axios.delete(
-      `https://gaia-mern-app.herokuapp.com/api/challenges/${id}`,
+    await api.delete(
+      `/api/challenges/${id}`,
       config
     );
     dispatch({

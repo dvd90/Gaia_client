@@ -5,7 +5,7 @@ import { getChallenge, deleteChallenge } from "../../actions/challenge";
 import { useParams, Link, useHistory } from "react-router-dom";
 import Navbar from "../layout/Navbar";
 import Button from "@material-ui/core/Button";
-import axios from "axios";
+import api from "../../utils/api";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import swal from "sweetalert";
@@ -93,8 +93,8 @@ const ShowChallenge = ({
           }
         };
         try {
-          const res = await axios.put(
-            `https://gaia-mern-app.herokuapp.com/api/challenges/${id}/join`,
+          const res = await api.put(
+            `/api/challenges/${id}/join`,
             config
           );
           console.log(res.data);
@@ -122,8 +122,8 @@ const ShowChallenge = ({
           }
         };
         try {
-          const res = await axios.put(
-            `https://gaia-mern-app.herokuapp.com/api/challenges/${id}/completed`,
+          const res = await api.put(
+            `/api/challenges/${id}/completed`,
             config
           );
           console.log(res.data);
