@@ -11,42 +11,67 @@ React client for [Gaia](https://github.com/dvd90/Gaia), a community app for redu
 - **Challenges** — complete eco-challenges (Waste, Energy, Transport) and earn Gaia points.
 - **Events** — create and join local eco-events on a Mapbox map.
 
-The UI is designed for **mobile and tablet** screens.
+Fully responsive — works on mobile, tablet and desktop.
 
 ## Tech stack
 
-- React 16 (Create React App) + Redux
-- Material-UI
-- Mapbox GL for the events map
+- Vite + React 18
+- React Router 7
+- Context-based state (auth, toasts, confirm dialogs)
+- Mapbox GL for the events map (lazy-loaded)
+- Vitest + Testing Library test suite (80% coverage enforced)
 
 ## Getting started
 
 1. Start the [Gaia API](https://github.com/dvd90/Gaia) first (it runs on `http://localhost:4000` by default).
 
-2. Install dependencies:
+2. Install dependencies (Node 20+):
 
    ```bash
-   yarn install
+   npm install
    ```
 
 3. Configure the environment:
 
    ```bash
    cp .env.example .env
-   # set REACT_APP_API_URL (your Gaia API) and REACT_APP_MAP_BOX_KEY
+   # set VITE_API_URL (your Gaia API) and VITE_MAPBOX_TOKEN
    ```
 
 4. Run the app:
 
    ```bash
-   yarn start
+   npm run dev
    ```
 
-   Then open it with a mobile-sized viewport (e.g. Chrome DevTools device toolbar).
+## Tests
 
-> **Note:** the npm scripts pass `--openssl-legacy-provider` so that this
-> Create-React-App 3 project builds on Node 17+. If you're on Node 16 or
-> older, remove that flag from the scripts in `package.json`.
+Vitest + Testing Library, with a **minimum 80% coverage threshold** enforced
+(currently ~99% statements):
+
+```bash
+npm test           # run all tests with coverage report
+npm run test:watch
+```
+
+## Deploying to Railway
+
+This repo ships with a `railway.json`. The production build is a static site
+served by [`serve`](https://www.npmjs.com/package/serve) (SPA fallback
+included). To deploy:
+
+1. Create a new Railway project → **Deploy from GitHub repo** → pick this repo.
+2. Set the service variables:
+   - `VITE_API_URL` — the public URL of your deployed Gaia API
+   - `VITE_MAPBOX_TOKEN` — your Mapbox token
+3. Deploy. Railway runs `npm run build` and then `npm start`, which serves the
+   `dist/` folder on the injected `PORT`.
+
+> Vite inlines `VITE_*` variables at **build time** — if you change them,
+> trigger a redeploy so the site is rebuilt.
+
+Remember to set `CLIENT_ORIGIN` on the API service to this site's URL so CORS
+allows the requests.
 
 ## Authors
 
